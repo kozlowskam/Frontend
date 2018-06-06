@@ -7,18 +7,19 @@ const baseUrl = 'http://localhost:4001'
 
 export const fetchAllQuizes = () => (dispatch) => {
     request
-    .get(`${baseUrl}/quizes`)
+    .get(`${baseUrl}/quizzes`)
     .then(response => dispatch({
       type: FETCHED_ALL_QUIZES,
-      payload: response.body.quizes
+      payload: response.body.quizzes
     }))
+    
     .catch(err => alert(err))
     }
-
+    
 
 export const deleteQuiz = (quizId) => (dispatch) => {
     request
-      .delete(`${baseUrl}/quizes/${quizId}`)
+      .delete(`${baseUrl}/quizzes/${quizId}`)
       .then(response => dispatch({
         type: DELETE_QUIZ,
         payload: quizId

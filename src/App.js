@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Route exact path="/quizes" component={QuizesList} />
-          <Route exact path="/quizes/:id" component={QuizesList} />
+          <Route exact path="/quizzes" component={QuizesList} />
+          <Route exact path="/quizzes/:id" component={QuizesList} />
         </div>
       </Router>
     );
