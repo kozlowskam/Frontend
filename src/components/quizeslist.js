@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import { fetchAllQuizes } from '../actions/quizes'
+import { fetchAllQuizes, deleteQuiz } from '../actions/quizes'
 
 class QuizesList extends PureComponent {
     static propTypes = {
@@ -15,6 +15,10 @@ class QuizesList extends PureComponent {
       this.props.fetchAllQuizes()
     }
   
+    deleteQuiz(quizId) {
+        this.props.deleteQuiz(quizId)
+    }
+
     render() {
       const {quizes} = this.props
       return (
@@ -31,6 +35,7 @@ class QuizesList extends PureComponent {
               { quizes.map(quiz => (<tr key={quiz.id}>
                 <td>{quiz.id}</td>
                 <td>{quiz.title}</td>
+                <td><button onClick={ () => this.deleteQuiz(quiz.id) }>Delete</button></td>
               </tr>)) }
             </tbody>
         </table>
@@ -39,6 +44,7 @@ class QuizesList extends PureComponent {
     }
   }
   
+  
   const mapStateToProps = function (state) {
     return {
       quizes: state.quizes
@@ -46,6 +52,7 @@ class QuizesList extends PureComponent {
   }
   
   export default connect(mapStateToProps, {
-    fetchAllQuizes
+    fetchAllQuizes,
+    deleteQuiz
   })(QuizesList)
   

@@ -1,4 +1,5 @@
 export const FETCHED_ALL_QUIZES = 'FETCHED_ALL_QUIZES'
+export const DELETE_QUIZ = 'DELETE_QUIZ'
 
 const quizes =  [
     {id : 1, title : 'quiz1'},
@@ -12,6 +13,17 @@ export function fetchAllQuizes() {
         payload: quizes
     }
 } 
+
+export function deleteQuiz(quizId) {
+    console.log('does it get here?', quizId)
+    return {
+        type: DELETE_QUIZ,
+        payload: quizId
+    }
+    
+}
+
+
 
 
 
@@ -28,3 +40,13 @@ export function fetchAllQuizes() {
 //     }))
 //     .catch(err => alert(err))
 //     }
+
+
+// export const deleteQuiz = (quizId) => (dispatch) => {
+//     request
+//       .delete(`${baseUrl}/quizes/${quizId}`)
+//       .then(response => dispatch({
+//         type: REMOVE_QUIZ,
+//         payload: quizId
+//       }))
+//   }

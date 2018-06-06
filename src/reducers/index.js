@@ -1,5 +1,7 @@
-import quizes from './fetchquizes'
+import quizes from './quizes'
+import quizId from './quiz'
 
 export default {
-    quizes
+    quizes,
+    quizId
 }
