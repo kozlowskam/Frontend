@@ -53,10 +53,7 @@ class Quiz extends PureComponent {
             ))}
           </tbody>
         </table>
-      </div>
-    );
-    return (
-      <div>
+
         <h1>Create a new question </h1>
         <QuestionForm onSubmit={this.addQuestion} />
       </div>

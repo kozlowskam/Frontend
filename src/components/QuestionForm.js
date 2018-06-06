@@ -4,7 +4,7 @@ class QuestionForm extends PureComponent {
   state = {};
 
   handleSubmit = e => {
-    //e.preventDefault();
+    e.preventDefault();
     this.props.onSubmit(this.state);
   };
 
