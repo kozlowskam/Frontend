@@ -1,14 +1,24 @@
 import React, { PureComponent } from "react";
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import "../App.css";
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import AccountCircle from '@material-ui/icons/AccountCircle';import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+
 
 
 
 
 class QuestionForm extends PureComponent {
-  state = {};
+  constructor(props) {
+    super(props)
+  
+  this.state = { value: ''};
+
+  this.handleChange = this.handleChange.bind(this);
+  }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -16,11 +26,12 @@ class QuestionForm extends PureComponent {
   };
 
   handleChange = event => {
-    const { name, value } = event.target;
+    const { name, value, selectedValue } = event.target;
 
-    this.setState({
-      [name]: value
-    });
+   this.setState ({
+     [name]: value,
+     selectedValue: event.target.value
+   })
   };
 
   render() {
@@ -31,65 +42,92 @@ class QuestionForm extends PureComponent {
       <Paper className="styles" elevation={4}>
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label htmlFor="question">Question</label>
-          <input
-            name="question"
-            id="question"
-            value={this.state.question || initialValues.question || ""}
-            onChange={this.handleChange}
-          />
+          <TextField
+          label="Type your question here"
+          name="question"
+          id="question"
+          helperText="Just be creative!"
+          value={this.state.question || initialValues.question || ""}
+          onChange={this.handleChange}
+        />
         </div>
 
         <div>
-          <label htmlFor="a">Answer A</label>
-          <input
-            name="a"
-            id="a"
-            value={this.state.a || initialValues.a || ""}
-            onChange={this.handleChange}
-          />
+        <Grid container spacing={8} alignItems="flex-end">
+          <Grid item>
+            <AccountCircle />
+          </Grid>
+          <Grid item>
+          <TextField
+          label="First answer here"
+          name="answer_a"
+          value={this.state.answer_a || initialValues.answer_a || ""}
+          onChange={this.handleChange}
+        />
+          </Grid>
+        </Grid>
         </div>
 
         <div>
-          <label htmlFor="b">Answer B</label>
-          <input
-            name="b"
-            id="b"
-            value={this.state.b || initialValues.b || ""}
-            onChange={this.handleChange}
-          />
+        <Grid container spacing={8} alignItems="flex-end">
+          <Grid item>
+            <AccountCircle />
+          </Grid>
+          <Grid item>
+          <TextField
+          label="Second answer here"
+          name="answer_b"
+          value={this.state.answer_b || initialValues.answer_b || ""}
+          onChange={this.handleChange}
+        />
+          </Grid>
+        </Grid>
         </div>
 
         <div>
-          <label htmlFor="c">Answer C</label>
-          <input
-            name="c"
-            id="c"
-            value={this.state.c || initialValues.c || ""}
-            onChange={this.handleChange}
-          />
+        <Grid container spacing={8} alignItems="flex-end">
+          <Grid item>
+            <AccountCircle />
+          </Grid>
+          <Grid item>
+          <TextField
+          label="Third answer here"
+          name="answer_c"
+          value={this.state.answer_c || initialValues.answer_c || ""}
+          onChange={this.handleChange}
+        />
+          </Grid>
+        </Grid>
         </div>
 
         <div>
-          <label htmlFor="d">Answer D</label>
-          <input
-            name="d"
-            id="d"
-            value={this.state.d || initialValues.d || ""}
-            onChange={this.handleChange}
-          />
+        <Grid container spacing={8} alignItems="flex-end">
+          <Grid item>
+            <AccountCircle />
+          </Grid>
+          <Grid item>
+          <TextField
+          label="Fourth answer here"
+          name="answer_d"
+          value={this.state.answer_d || initialValues.answer_d || ""}
+          onChange={this.handleChange}
+        />
+          </Grid>
+        </Grid>
         </div>
 
         <div>
-          <label htmlFor="correct_answer">Correct Answer</label>
-          <input
-            name="correct_answer"
-            id="correct_answer"
-            value={
-              this.state.correct_answer || initialValues.correct_answer || ""
-            }
-            onChange={this.handleChange}
-          />
+        <FormLabel component="legend">Correct Answer</FormLabel>
+              <FormControlLabel value="answer_a" name="correct_answer" control={<Radio />} label="Answer A" checked={this.state.selectedValue === 'answer_a'} 
+                  onChange={this.handleChange}/>
+              <FormControlLabel value="answer_b" control={<Radio />} label="Answer B" checked={this.state.selectedValue === 'answer_b'} 
+                  onChange={this.handleChange}/>
+              <FormControlLabel value="answer_c"  control={<Radio />} label="Answer C" checked={this.state.selectedValue === 'answer_c'} 
+                  onChange={this.handleChange}/>
+              <FormControlLabel value="answer_d" control={<Radio />} label="Answer D" checked={this.state.selectedValue === 'answer_d'} 
+                  onChange={this.handleChange}/>
+
+          
         </div>
 
         <button type="submit">Save</button>
