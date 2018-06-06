@@ -20,12 +20,12 @@ export const fetchAllQuizzes = () => (dispatch) => {
 export const deleteQuiz = (quizId) => (dispatch) => {
     request
       .delete(`${baseUrl}/quizzes/${quizId}`)
+      
       .then(response => dispatch({
         type: DELETE_QUIZ,
         payload: quizId
       }))
   }
-
 
 
 
