@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import { fetchAllQuizes, deleteQuiz } from '../actions/quizes'
 
 class QuizesList extends PureComponent {
@@ -23,7 +24,7 @@ class QuizesList extends PureComponent {
       const {quizes} = this.props
       return (
         <div>
-          <h1>All quizes</h1>
+          <h1>Welcome to TypeQuiz</h1>
           <table>
             <thead>
               <tr>
@@ -34,11 +35,15 @@ class QuizesList extends PureComponent {
             <tbody>
               { quizes.map(quiz => (<tr key={quiz.id}>
                 <td>{quiz.id}</td>
-                <td>{quiz.title}</td>
+                <td>
+                    <Link to={ `/quizes/${quiz.id}` }>{quiz.title}</Link>
+                </td>
                 <td><button onClick={ () => this.deleteQuiz(quiz.id) }>Delete</button></td>
               </tr>)) }
             </tbody>
         </table>
+        
+        <Link to={ '/createquiz'} target="_blank">Create a new quiz!</Link>
         </div>
       )
     }
