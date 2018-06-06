@@ -1,15 +1,15 @@
 import * as request from 'superagent'
 
-export const FETCHED_ALL_QUIZES = 'FETCHED_ALL_QUIZES'
+export const FETCHED_ALL_QUIZZES = 'FETCHED_ALL_QUIZZES'
 export const DELETE_QUIZ = 'DELETE_QUIZ'
 
 const baseUrl = 'http://localhost:4001'
 
-export const fetchAllQuizes = () => (dispatch) => {
+export const fetchAllQuizzes = () => (dispatch) => {
     request
     .get(`${baseUrl}/quizzes`)
     .then(response => dispatch({
-      type: FETCHED_ALL_QUIZES,
+      type: FETCHED_ALL_QUIZZES,
       payload: response.body.quizzes
     }))
     

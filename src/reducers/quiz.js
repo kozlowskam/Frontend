@@ -1,4 +1,4 @@
-import {DELETE_QUIZ} from '../actions/quizes' 
+import {DELETE_QUIZ} from '../actions/quizzes' 
 
 export default function(state = [], action) {
     switch (action.type) {

@@ -2,9 +2,9 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { fetchAllQuizes, deleteQuiz } from '../actions/quizes'
+import { fetchAllQuizzes, deleteQuiz } from '../actions/quizzes'
 
-class QuizesList extends PureComponent {
+class QuizzesList extends PureComponent {
     static propTypes = {
       quizes: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -13,7 +13,7 @@ class QuizesList extends PureComponent {
     }
 
     componentWillMount() {
-      this.props.fetchAllQuizes()
+      this.props.fetchAllQuizzes()
     }
   
     deleteQuiz(quizId) {
@@ -21,7 +21,7 @@ class QuizesList extends PureComponent {
     }
 
     render() {
-      const {quizes} = this.props
+      const {quizzes} = this.props
       return (
         <div>
           <h1>Welcome to TypeQuiz</h1>
@@ -33,10 +33,10 @@ class QuizesList extends PureComponent {
               </tr>
             </thead>
             <tbody>
-              { quizes.map(quiz => (<tr key={quiz.id}>
+              { quizzes.map(quiz => (<tr key={quiz.id}>
                 <td>{quiz.id}</td>
                 <td>
-                    <Link to={ `/quizes/${quiz.id}` }>{quiz.title}</Link>
+                    <Link to={ `/quizzes/${quiz.id}` }>{quiz.title}</Link>
                 </td>
                 <td><button onClick={ () => this.deleteQuiz(quiz.id) }>Delete</button></td>
               </tr>)) }
@@ -52,12 +52,12 @@ class QuizesList extends PureComponent {
   
   const mapStateToProps = function (state) {
     return {
-      quizes: state.quizes
+      quizzes: state.quizzes
     }
   }
   
   export default connect(mapStateToProps, {
-    fetchAllQuizes,
+    fetchAllQuizzes,
     deleteQuiz
-  })(QuizesList)
+  })(QuizzesList)
   

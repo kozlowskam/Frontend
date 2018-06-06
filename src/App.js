@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import QuizesList from './components/quizeslist'
+import QuizzesList from './components/quizzeslist'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 
@@ -10,8 +9,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Route exact path="/quizzes" component={QuizesList} />
-          <Route exact path="/quizzes/:id" component={QuizesList} />
+          <Route exact path="/quizzes" component={QuizzesList} />
+          <Route exact path="/quizzes/:id" component={QuizzesList} />
         </div>
       </Router>
     );

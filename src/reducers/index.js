@@ -1,7 +1,7 @@
-import quizes from './quizes'
+import quizzes from './quizzes'
 import quizId from './quiz'
 
 export default {
-    quizes,
+    quizzes,
     quizId
 }
