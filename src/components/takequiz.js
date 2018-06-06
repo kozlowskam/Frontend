@@ -3,6 +3,10 @@ import React, { PureComponent } from "react";
 import { Quiz } from "../lib/data.js";
 
 class TakeQuiz extends PureComponent {
+  handleInputChange(event) {
+    console.log(event.target.value);
+  }
+
   render() {
     return (
       // this.props.data.map()
@@ -17,12 +21,14 @@ class TakeQuiz extends PureComponent {
                     <input
                       name={quetions.quetions}
                       type="radio"
-                      value={quetions.a}
+                      value={quetions[answer]}
+                      onChange={this.handleInputChange}
                     />
                     {quetions[answer]}
                   </div>
                 );
             })}
+            <br />
           </div>
         ))}
       </div>
@@ -67,14 +73,5 @@ export default TakeQuiz;
 // <input name="i" type="radio" value={quetions.a} />
 // {quetions.a}
 // <br />
-// <input name="i" type="radio" value={quetions.b} />
-// {quetions.b} <br />
-// <input name="i" type="radio" value={quetions.c} />
-// {quetions.c} <br />
-// <input name="i" type="radio" value={quetions.d} />
-// {quetions.d} <br />
-// <br />
 
-{
-  /* <div>{quetions[x]}</div>; */
-}
+// onClick={ () => changeSauce(el) }
