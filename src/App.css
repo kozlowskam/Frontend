@@ -2,4 +2,11 @@
   text-align: center;
 }
 
-
+.styles {
+    padding-Top: 16;
+    padding-Bottom: 16;
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto
+};

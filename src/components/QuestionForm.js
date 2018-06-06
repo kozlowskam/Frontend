@@ -1,4 +1,11 @@
 import React, { PureComponent } from "react";
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import "../App.css";
+
+
+
 
 class QuestionForm extends PureComponent {
   state = {};
@@ -18,7 +25,10 @@ class QuestionForm extends PureComponent {
 
   render() {
     const initialValues = this.props.initialValues || {};
+
     return (
+    <div>      
+      <Paper className="styles" elevation={4}>
       <form onSubmit={this.handleSubmit}>
         <div>
           <label htmlFor="question">Question</label>
@@ -84,6 +94,8 @@ class QuestionForm extends PureComponent {
 
         <button type="submit">Save</button>
       </form>
+      </Paper>
+      </div>
     );
   }
 }
