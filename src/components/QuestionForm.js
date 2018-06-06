@@ -26,8 +26,13 @@ class QuestionForm extends PureComponent {
   };
 
   handleChange = event => {
+<<<<<<< HEAD
     const { name , value } = event.target;
     
+=======
+    const { name, value } = event.target;
+
+>>>>>>> 6bfc517ad7bda48ca0e77f97be34917a8a8dc060
    this.setState ({
      [name]: value,
      selectedValue: event.target.value
@@ -122,7 +127,11 @@ class QuestionForm extends PureComponent {
         <FormLabel component="legend">Correct Answer</FormLabel>
               <FormControlLabel value="answer_a" name="correct_answer" control={<Radio />} label="Answer A" checked={this.state.selectedValue === 'answer_a'} 
                   onChange={this.handleChange}/>
+<<<<<<< HEAD
               <FormControlLabel value="answer_b" name="correct_answer"control={<Radio />} label="Answer B" checked={this.state.selectedValue ==='answer_b'} 
+=======
+              <FormControlLabel value="answer_b" name="correct_answer" control={<Radio />} label="Answer B" checked={this.state.selectedValue === 'answer_b'} 
+>>>>>>> 6bfc517ad7bda48ca0e77f97be34917a8a8dc060
                   onChange={this.handleChange}/>
               <FormControlLabel value="answer_c" name="correct_answer" control={<Radio />} label="Answer C" checked={this.state.selectedValue === 'answer_c'} 
                   onChange={this.handleChange}/>
