@@ -10,6 +10,7 @@ class TakeQuiz extends PureComponent {
   render() {
     return (
       // this.props.data.map()
+
       <div>
         {Quiz.map((quetions, i) => (
           <div>
