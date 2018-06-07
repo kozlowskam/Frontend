@@ -19,7 +19,7 @@ class SignUpComponent extends Component {
         const { name, value } = event.target
         event.target.setCustomValidity('')
         if (!event.target.validity.valid) {
-          event.target.setCustomValidity('Please enter your name')
+          event.target.setCustomValidity('Please enter your first name')
         }
         signUpInfo[name] = value
       }
@@ -28,7 +28,7 @@ class SignUpComponent extends Component {
         const { name, value } = event.target
         event.target.setCustomValidity('')
         if (!event.target.validity.valid) {
-          event.target.setCustomValidity('Please enter your Lastname')
+          event.target.setCustomValidity('Please enter your last name')
         }
         signUpInfo[name] = value
       }

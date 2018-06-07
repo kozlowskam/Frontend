@@ -2,8 +2,10 @@ import React, { PureComponent } from "react";
 import * as request from 'superagent'
 // import SignUpComponent from './SignUpComponent'
 import {Link} from 'react-router-dom'
-
 import { Redirect } from 'react-router-dom'
+import {logIn} from '../actions/logInSignUpAction'
+
+
 
 let logInInfo = {}
 class LoginComponent extends PureComponent {
@@ -13,7 +15,9 @@ class LoginComponent extends PureComponent {
 
   handleSubmit(evt){
     evt.preventDefault()
+
     console.log(logInInfo, 'info needs to be pushed to auth when ready')   
+    logIn(logInInfo)
   }
 
   handleChange(evt) {
@@ -31,7 +35,7 @@ class LoginComponent extends PureComponent {
             <input 
                 type="text"
                 className="input"
-                id="loginName"
+                id="email"
                 
                 onChange={this.handleChange}
             />
