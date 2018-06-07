@@ -1,6 +1,6 @@
 import { ADD_QUIZ } from "../actions/quiz";
 
-const quiz = [];
+const quiz = {};
 
 export default function(state = quiz, action) {
   switch (action.type) {
@@ -9,5 +9,5 @@ export default function(state = quiz, action) {
 
     default:
       return state;
-  }}
-
+  }
+}

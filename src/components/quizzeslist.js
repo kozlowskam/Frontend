@@ -41,28 +41,39 @@ class QuizzesList extends PureComponent {
                 <td>{quiz.id}</td>
                 <td>
                     <Link to={ `/quizzes/${quiz.id}` } onClick={ () => this.fetchQuiz(quiz.id)}>{quiz.title}</Link>
+
                 </td>
-                <td><button onClick={ () => this.deleteQuiz(quiz.id) }>Delete</button></td>
-              </tr>)) }
-            </tbody>
+                <td>
+                  <button onClick={() => this.deleteQuiz(quiz.id)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
-        
-        <Link to={ '/createquiz'} target="_blank">Create a new quiz!</Link>
-        </div>
-      )
-    }
+
+        <Link to={"/createquiz"} target="_blank">
+          Create a new quiz!
+        </Link>
+      </div>
+    );
   }
-  
-  
-  const mapStateToProps = function (state) {
-    return {
-      quizzes: state.quizzes
-    }
-  }
-  
-  export default connect(mapStateToProps, {
+}
+
+const mapStateToProps = function(state) {
+  return {
+    quizzes: state.quizzes,
+    quiz: state.quiz
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
     fetchAllQuizzes,
     deleteQuiz,
+
     fetchQuiz
   })(QuizzesList)
-  
+
