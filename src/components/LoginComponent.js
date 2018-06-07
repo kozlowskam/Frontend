@@ -1,17 +1,19 @@
 import React, { PureComponent } from "react";
 import * as request from 'superagent'
+// import SignUpComponent from './SignUpComponent'
+import {Link} from 'react-router-dom'
 
-
+import { Redirect } from 'react-router-dom'
 
 let logInInfo = {}
-class Login extends PureComponent {
+class LoginComponent extends PureComponent {
 
 
 
 
   handleSubmit(evt){
     evt.preventDefault()
-    console.log(logInInfo)   
+    console.log(logInInfo, 'info needs to be pushed to auth when ready')   
   }
 
   handleChange(evt) {
@@ -51,11 +53,11 @@ class Login extends PureComponent {
                 >submit</button>
             </div>
           </form>
-          <a href='url'>don't have an account? sign up!</a>
+          <Link to='/signUp'>Sign up</Link>!
         </div>
       );
     }
   }
   
-  export default Login;
+  export default LoginComponent;
   
