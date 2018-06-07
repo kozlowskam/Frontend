@@ -1,78 +1,110 @@
 import React, { PureComponent } from "react";
 //import { connect } from "react-redux";
 import { Quiz } from "../lib/data.js";
+import { Quiz2 } from "../lib/data.js";
 
 class TakeQuiz extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      useranswer: "Hi adam!",
+      id: "hi Fong!"
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  // state = {
+  //   useranswer: "",
+  //   id: 1
+  // };
+
   handleInputChange(event) {
     console.log(event.target.value);
+
+    this.setState({
+      useranswer: event.target.value,
+      id: event.target.name
+    });
+    console.log(this.state);
+  }
+  handleSubmit(event) {
+    alert("A name was submitted: ");
+
+    event.preventDefault();
   }
 
   render() {
     return (
-      // this.props.data.map()
-
-      <div>
-        {Quiz.map((quetions, i) => (
+      <form onSubmit={this.handleSubmit}>
+        {Quiz2.questions.map((quetion, i) => (
           <div>
-            <div key={i}>{quetions.quetions}</div>
-            {Object.keys(quetions).map((answer, i) => {
-              if (i > 1 && i < 6)
-                return (
-                  <div>
-                    <input
-                      name={quetions.quetions}
-                      type="radio"
-                      value={quetions[answer]}
-                      onChange={this.handleInputChange}
-                    />
-                    {quetions[answer]}
-                  </div>
-                );
-            })}
+            {quetion.question} <br />
+            {console.log(i, "test")}
+            <input
+              name={i}
+              type="radio"
+              value="A"
+              onChange={this.handleInputChange}
+            />
+            {
+              //{"userAnswer":"b","id":3}
+            }
+            {quetion.A} <br />
+            <input
+              name={i}
+              type="radio"
+              value={"B"}
+              onChange={this.handleInputChange}
+            />
+            {quetion.B} <br />
+            <input
+              name={i}
+              type="radio"
+              value={"C"}
+              onChange={this.handleInputChange}
+            />
+            {quetion.C} <br />
+            <input
+              name={i}
+              type="radio"
+              value={"D"}
+              onChange={this.handleInputChange}
+            />
+            {quetion.D} <br />
             <br />
           </div>
         ))}
-      </div>
+
+        <input type="submit" value="Submit" />
+      </form>
     );
   }
 }
 export default TakeQuiz;
 
-// <input
-// name="choseBase"
-// type="radio"
-// value="8.99"
-// onChange={this.handleInputChange}
-// />25cm NY Style € 8,99<br />
-
-// id: 2,
-// quetions: "this is a quetion2",
-// a: "Red sauce",
-// b: "Mix it up",
-// c: "horse",
-// d: "rat",
-// correct_answer: "a"
-
-//  {console.log(Object.keys(quetions))}
+// export const Quiz2 = {
+//   id: 1,
+//   questions: [
+//     {
+//       A: "dsafafds",
+//       B: "sadasda",
+//       C: "safasfaf",
+//       D: "sadafdgfg",
+//       correct_answer: "a",
+//       id: 1,
+//       question: "sadasdasd"
+//     },
 
 // {
-//   console.log(Object.keys(quetions.a));
+//   id: 4,
+//   quetions: "quetion 4",
+//   a: "a Mix it up",
+//   b: "b horse",
+//   c: "c horse",
+//   d: "d rat",
+//   correct_answer: "a"
 // }
 
-// {Object.keys(quetions).map((x, i) => {
-//   console.log(x[i]);
-// })}
-
-// {console.log(quetions)}
-// {console.log(Object.keys(quetions), "--")}
-
-// {Object.keys(quetions).map((x, i) => {
-//   if (i > 0 && i < 6) console.log(quetions[x]);
-// })}
-
-// <br />
-// <input name="i" type="radio" value={quetions.a} />
-// {quetions.a}
-// <br />
-
-// onClick={ () => changeSauce(el) }
+//send to zusi
+// {1:“a”} and now it is {userAnswer:“a”, id:“1”}
+// [{"userAnswer":"B","id":1},{"userAnswer":"A","id":2},{"userAnswer":"B","id":3}]
