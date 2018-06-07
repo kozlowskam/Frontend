@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import * as request from 'superagent'
+import TextField from "@material-ui/core/TextField";
+import Paper from "@material-ui/core/Paper";
+import "../App.css";
+
 
 let signUpInfo = {}
 
@@ -65,14 +69,20 @@ class SignUpComponent extends Component {
     
 
     render() {
+        const textField = {
+            width: 300
+          }
+    
+
       return (
             <div>
-
                 <h1>Sign up</h1>
+                <Paper className="styles" elevation={4}>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <div>
                         <label>First Name &nbsp;:</label>
-                        <input
+                        <TextField
+                        style={textField}
                             type="firstName"
                             name="firstName"
                             required="required"
@@ -82,7 +92,8 @@ class SignUpComponent extends Component {
                     </div>
                     <div>
                         <label>Last Name &nbsp;:</label>   
-                        <input
+                        <TextField
+                        style={textField}
                             type="lastName"
                             name="lastName"
                             required="required"
@@ -92,7 +103,8 @@ class SignUpComponent extends Component {
                     </div>
                     <div>
                         <label>Email &nbsp;:</label>   
-                        <input
+                        <TextField
+                        style={textField}
                             type="email"
                             name="email"
                             required="required"
@@ -103,7 +115,8 @@ class SignUpComponent extends Component {
                     </div>
                     <div>
                         <label>Password:</label>
-                        <input
+                        <TextField
+                        style={textField}
                             type="password"
                             name="password"
                             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
@@ -114,7 +127,9 @@ class SignUpComponent extends Component {
                     </div>
                     <div>
                         <label>Confirm Password:</label>
-                        <input
+                        <TextField
+                        style={textField}
+                            className="textField"
                             type="password"
                             name="confirmPassword"
                             required="required"
@@ -129,6 +144,7 @@ class SignUpComponent extends Component {
                         )}
                     <button type="submit">Sign Up</button>
                 </form>
+                </Paper>
             </div>
 
               );
