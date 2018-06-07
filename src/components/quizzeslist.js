@@ -16,16 +16,6 @@ class QuizzesList extends PureComponent {
     ).isRequired
   };
 
-  createAndChooseQuiz(quiz) {
-    const { addQuiz, chosenQuiz } = this.props;
-
-    return addQuiz(quiz).then(newQuiz => {
-      const quizId = newQuiz.payload.quiz.id;
-      chosenQuiz(quizId);
-      console.log(this.props);
-    });
-  }
-
   componentWillMount() {
     this.props.fetchAllQuizzes();
   }
@@ -39,7 +29,7 @@ class QuizzesList extends PureComponent {
     return (
       <div>
         <h1>Welcome to TypeQuiz</h1>
-        <QuizForm onSubmit={this.createAndChooseQuiz()} />
+
         <table>
           <thead>
             <tr>
@@ -74,7 +64,8 @@ class QuizzesList extends PureComponent {
 
 const mapStateToProps = function(state) {
   return {
-    quizzes: state.quizzes
+    quizzes: state.quizzes,
+    quiz: state.quiz
   };
 };
 
@@ -82,6 +73,7 @@ export default connect(
   mapStateToProps,
   {
     fetchAllQuizzes,
-    deleteQuiz
+    deleteQuiz,
+    addQuiz
   }
 )(QuizzesList);
