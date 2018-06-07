@@ -15,17 +15,20 @@ class TakeQuiz extends PureComponent {
   }
 
   handleInputChange(event) {
-    this.setState({
-      useranswer: event.target.value,
-      id: Number(event.target.name) + 1
-    });
-    console.log(event.target.value);
-    console.log(event.target.value, "value");
-    answer.push(this.state);
-    console.log("this answer:", answer);
+    this.setState(
+      {
+        useranswer: event.target.value,
+        id: Number(event.target.name) + 1
+      },
+      function() {
+        answer.push(this.state);
+        console.log(this.state);
+      }.bind(this)
+    );
   }
   handleSubmit(event) {
     this.props.takeQuiz(answer);
+    console.log(answer, "__");
 
     event.preventDefault();
   }
@@ -88,29 +91,6 @@ export default connect(
     takeQuiz
   }
 )(TakeQuiz);
-
-// export const Quiz2 = {
-//   id: 1,
-//   questions: [
-//     {
-//       A: "dsafafds",
-//       B: "sadasda",
-//       C: "safasfaf",
-//       D: "sadafdgfg",
-//       correct_answer: "a",
-//       id: 1,
-//       question: "sadasdasd"
-//     },
-
-// {
-//   id: 4,
-//   quetions: "quetion 4",
-//   a: "a Mix it up",
-//   b: "b horse",
-//   c: "c horse",
-//   d: "d rat",
-//   correct_answer: "a"
-// }
 
 //send to zusi
 // {1:“a”} and now it is {userAnswer:“a”, id:“1”}
