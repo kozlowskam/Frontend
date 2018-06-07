@@ -27,10 +27,12 @@ class TakeQuiz extends PureComponent {
     this.props.takeQuiz(answer);
 
     event.preventDefault();
+
   }
 
   render() {
     return (
+
       <form onSubmit={this.handleSubmit}>
         {Quiz2.questions.map((quetion, i) => (
           <div>
@@ -114,3 +116,4 @@ export default connect(
 //send to zusi
 // {1:“a”} and now it is {userAnswer:“a”, id:“1”}
 // [{"userAnswer":"B","id":1},{"userAnswer":"A","id":2},{"userAnswer":"B","id":3}]
+

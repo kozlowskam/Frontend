@@ -21,12 +21,20 @@ class QuestionList extends PureComponent {
     ).isRequired
   };
  */
+
+  addQuiz = quiz => {
+    this.props.addQuiz(quiz);
+  };
+
   addQuestion = question => {
+    let lastQuiz = { ...this.props.quizzes[this.props.quizzes.length - 1] };
+
+    question = { ...question, quiz: lastQuiz.id };
     this.props.addQuestion(question);
   };
 
   render() {
-    const { questions } = this.props;
+    const { questions, quiz } = this.props;
     console.log(this.props);
     return (
       <div>
