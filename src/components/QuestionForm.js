@@ -10,6 +10,7 @@ class QuestionForm extends PureComponent {
 
   handleChange = event => {
     const { name, value } = event.target;
+    console.log(event.target.value)
 
     this.setState({
       [name]: value
@@ -25,7 +26,6 @@ class QuestionForm extends PureComponent {
           <input
             name="question"
             id="question"
-            value={this.state.question || initialValues.question || ""}
             onChange={this.handleChange}
           />
         </div>
