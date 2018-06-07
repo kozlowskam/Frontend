@@ -8,7 +8,11 @@ export class QuizQuestions extends PureComponent {
   }
 
   render() {
-    return <div>{QuizQuestions}</div>;
+    return (
+      <div>
+        <QuizForm onSubmit={this.addQuiz} />
+      </div>
+    );
   }
 }
 
