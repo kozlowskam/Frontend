@@ -1,12 +1,13 @@
-import {DELETE_QUIZ} from '../actions/quizes' 
+import { ADD_QUIZ } from "../actions/quiz";
 
-export default function(state = [], action) {
-    switch (action.type) {
-        
-        case DELETE_QUIZ:
-        return state.filter(quiz => quiz.id !== action.payload)
+const quiz = [];
 
-        default: 
-        return state
-    }
-}
+export default function(state = quiz, action) {
+  switch (action.type) {
+    case ADD_QUIZ:
+      return action.payload;
+
+    default:
+      return state;
+  }}
+

@@ -2,26 +2,30 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { fetchAllQuizes, deleteQuiz } from '../actions/quizes'
+import { fetchAllQuizzes, deleteQuiz, fetchQuiz } from '../actions/quizzes'
 
-class QuizesList extends PureComponent {
+class QuizzesList extends PureComponent {
     static propTypes = {
-      quizes: PropTypes.arrayOf(PropTypes.shape({
+      quizzes: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
       })).isRequired
     }
 
     componentWillMount() {
-      this.props.fetchAllQuizes()
+      this.props.fetchAllQuizzes()
     }
   
     deleteQuiz(quizId) {
         this.props.deleteQuiz(quizId)
     }
 
+    fetchQuiz(quizId) {
+      this.props.fetchQuiz(quizId)
+    }
+
     render() {
-      const {quizes} = this.props
+      const {quizzes} = this.props
       return (
         <div>
           <h1>Welcome to TypeQuiz</h1>
@@ -29,14 +33,14 @@ class QuizesList extends PureComponent {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th>Title</th>
               </tr>
             </thead>
             <tbody>
-              { quizes.map(quiz => (<tr key={quiz.id}>
+              { quizzes.map(quiz => (<tr key={quiz.id}>
                 <td>{quiz.id}</td>
                 <td>
-                    <Link to={ `/quizes/${quiz.id}` }>{quiz.title}</Link>
+                    <Link to={ `/quizzes/${quiz.id}` } onClick={ () => this.fetchQuiz(quiz.id)}>{quiz.title}</Link>
                 </td>
                 <td><button onClick={ () => this.deleteQuiz(quiz.id) }>Delete</button></td>
               </tr>)) }
@@ -52,12 +56,13 @@ class QuizesList extends PureComponent {
   
   const mapStateToProps = function (state) {
     return {
-      quizes: state.quizes
+      quizzes: state.quizzes
     }
   }
   
   export default connect(mapStateToProps, {
-    fetchAllQuizes,
-    deleteQuiz
-  })(QuizesList)
+    fetchAllQuizzes,
+    deleteQuiz,
+    fetchQuiz
+  })(QuizzesList)
   

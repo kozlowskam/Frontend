@@ -1,7 +1,16 @@
-import quizes from './quizes'
-import quizId from './quiz'
+import quizzes from './quizzes';
+import questions from "./questions";
+import fetchquiz from './fetchquiz'
+import quiz from "./quiz";
+
 
 export default {
-    quizes,
-    quizId
+
+  questions,
+  quiz,
+  quizzes,
+  fetchquiz,
+  questions
 }
+
+
