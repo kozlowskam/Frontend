@@ -2,12 +2,11 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addQuestion } from "../actions/questions";
-import { addQuiz } from "../actions/questions";
 import { Link } from "react-router-dom";
 import QuestionForm from "./QuestionForm";
-import CreateQuizButton from "./CreateQuizButton";
+import QuizForm from "./QuizForm";
 
-class Quiz extends PureComponent {
+class QuestionList extends PureComponent {
   /*   static propTypes = {
     questions: PropTypes.arrayOf(
       PropTypes.shape({
@@ -22,17 +21,25 @@ class Quiz extends PureComponent {
     ).isRequired
   };
  */
+
+  addQuiz = quiz => {
+    this.props.addQuiz(quiz);
+  };
+
   addQuestion = question => {
+    let lastQuiz = { ...this.props.quizzes[this.props.quizzes.length - 1] };
+
+    question = { ...question, quiz: lastQuiz.id };
     this.props.addQuestion(question);
   };
 
   render() {
-    const { questions } = this.props;
+    const { questions, quiz } = this.props;
     console.log(this.props);
     return (
       <div>
-        <h1> Create New Quiz </h1>
-        <CreateQuizButton />
+        <h2> Create your questions </h2>
+        <QuizForm onSubmit={this.addQuiz} />
         <table>
           <thead>
             <tr>
@@ -65,7 +72,8 @@ class Quiz extends PureComponent {
 
 const mapStateToProps = function(state) {
   return {
-    questions: state.questions
+    questions: state.questions,
+    quiz: state.quiz
   };
 };
 
@@ -74,4 +82,4 @@ export default connect(
   {
     addQuestion
   }
-)(Quiz);
+)(QuestionList);

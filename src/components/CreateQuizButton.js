@@ -19,7 +19,7 @@ export class CreateQuizButton extends PureComponent {
     return (
       <button onClick={this.addQuizClick} className="CreateQuizButton">
         {" "}
-        CREATE QUIZ{" "}
+        SAVE QUIZ{" "}
       </button>
     );
   }
