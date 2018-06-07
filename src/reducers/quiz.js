@@ -9,5 +9,5 @@ export default function(state = quiz, action) {
 
     default:
       return state;
-  }
-}
+  }}
+
