@@ -12,15 +12,13 @@ import Button from '@material-ui/core/Button';
 
 
 
-
-
 class QuestionForm extends PureComponent {
   constructor(props) {
-    super(props)
-  
-  this.state = {};
+    super(props);
 
-  this.handleChange = this.handleChange.bind(this);
+    this.state = {};
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit = e => {
@@ -29,6 +27,7 @@ class QuestionForm extends PureComponent {
   };
 
   handleChange = event => {
+
     const { name , value } = event.target;
 
 
@@ -37,7 +36,7 @@ class QuestionForm extends PureComponent {
      selectedValue: event.target.value
 })
    
-   
+
   };
 
   render() {
@@ -49,6 +48,7 @@ class QuestionForm extends PureComponent {
     }
 
     return (
+
     <div>      
       <Paper className="styles" elevation={4}>
       <form onSubmit={this.handleSubmit}>
@@ -144,6 +144,7 @@ class QuestionForm extends PureComponent {
         <Button type="submit"variant="contained" component="span" color="primary">Save</Button>
       </form>
       </Paper>
+
       </div>
     );
   }

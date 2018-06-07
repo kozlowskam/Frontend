@@ -2,11 +2,13 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addQuestion } from "../actions/questions";
+import { addQuiz } from "../actions/questions";
 import { Link } from "react-router-dom";
 import QuestionForm from "./QuestionForm";
+import CreateQuizButton from "./CreateQuizButton";
 
 class Quiz extends PureComponent {
-/*   static propTypes = {
+  /*   static propTypes = {
     questions: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -26,10 +28,11 @@ class Quiz extends PureComponent {
 
   render() {
     const { questions } = this.props;
+    console.log(this.props);
     return (
       <div>
-        <h1> Quiz nr1 </h1>
-
+        <h1> Create New Quiz </h1>
+        <CreateQuizButton />
         <table>
           <thead>
             <tr>
