@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Quiz } from "../lib/data.js";
 import { Quiz2 } from "../lib/data.js";
 import { takeQuiz } from "../actions/takequiz";
+//test
 const answer = [];
 
 class TakeQuiz extends PureComponent {
