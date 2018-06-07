@@ -26,10 +26,6 @@ class QuestionList extends PureComponent {
     this.props.fetchAllQuizzes();
   }
 
-  addQuiz = quiz => {
-    this.props.addQuiz(quiz);
-  };
-
   addQuestion = question => {
     let lastQuiz = { ...this.props.quizzes[this.props.quizzes.length - 1] };
 
@@ -38,12 +34,12 @@ class QuestionList extends PureComponent {
   };
 
   render() {
-    const { questions, quiz } = this.props;
+    const { questions, quiz, quizzes } = this.props;
     console.log(this.props);
     return (
       <div>
         <h2> Create your quiz </h2>
-        <table>
+        {/* <table>
           <thead>
             <tr>
               <th>#</th>
@@ -64,7 +60,7 @@ class QuestionList extends PureComponent {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
 
         <h1>Create a new question </h1>
         <QuestionForm onSubmit={this.addQuestion} />
@@ -75,7 +71,8 @@ class QuestionList extends PureComponent {
 
 const mapStateToProps = function(state) {
   return {
-    questions: state.questions
+    questions: state.questions,
+    quizzes: state.quizzes
   };
 };
 
