@@ -18,7 +18,7 @@ class App extends Component {
           <Route exact path="/signUp" component={SignUpComponent} />
           <Route exact path="/quizzes" component={QuizzesList} />
           <Route exact path="/quizzes/:id" />
-          <Route exact path="/quizzes/createquiz" component={Quiz} />
+          {/* <Route exact path="/quizzes/createquiz" component={Quiz} /> */}
         </div>
       </Router>
     );
