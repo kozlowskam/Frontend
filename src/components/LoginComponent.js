@@ -17,8 +17,7 @@ class LoginComponent extends PureComponent {
     evt.preventDefault()
 
     console.log(logInInfo, 'info needs to be pushed to auth when ready')   
-
-      store.dispatch(logIn(logInInfo))
+    logIn(logInInfo)
     
   }
 

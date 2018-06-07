@@ -1,9 +1,12 @@
 import { LOG_IN } from "../actions/logInSignUpAction";
 
-export default function(state = {}, action) {
-  switch (action.type) {
+export default function(state = {}, {type, payload}) {
+  
+  switch (type) {
+    
     case LOG_IN:
-    return state = {...state, ...action.payload}
+    
+    return {...state, ...payload}
 
     default:
       return state;
