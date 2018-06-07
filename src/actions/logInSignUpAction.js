@@ -5,25 +5,25 @@ export const SIGN_UP = "SIGN_UP";
 
 
 
-export const logIn = logInData => (dispatch) => 
+export const logIn = logInData => 
   request
     .post('http://localhost:4000/logins')
     .send(logInData)
     .then(result => {
-      console.log(result)
-      dispatch({
-        // type: USER_LOGIN_SUCCES,
-        payload:result.body
+      console.log(result.body)
+      // dispatch({
+      //   type: LOG_IN,
+      //   payload:result.body
 
-      })
+      // })
     })  
     .catch(err=> {
       if (err.status === 400) {
-        dispatch({      
+        // dispatch({      
             
-          // type: USER_LOGIN_FAILED,
-          // payload: result.body
-        })
+        //   // type: USER_LOGIN_FAILED,
+        //   // payload: result.body
+        // })
       }
       else {
         console.error(err)

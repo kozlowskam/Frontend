@@ -4,8 +4,8 @@ import * as request from 'superagent'
 import {Link} from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import {logIn} from '../actions/logInSignUpAction'
-
-
+import {connect} from 'react-redux'
+import store from '../store'
 
 let logInInfo = {}
 class LoginComponent extends PureComponent {
@@ -17,7 +17,9 @@ class LoginComponent extends PureComponent {
     evt.preventDefault()
 
     console.log(logInInfo, 'info needs to be pushed to auth when ready')   
-    logIn(logInInfo)
+
+      store.dispatch(logIn(logInInfo))
+    
   }
 
   handleChange(evt) {
@@ -63,5 +65,5 @@ class LoginComponent extends PureComponent {
     }
   }
   
-  export default LoginComponent;
+  export default connect(null, {logIn})(LoginComponent)
   
