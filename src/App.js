@@ -18,7 +18,7 @@ class App extends Component {
           <Route exact path="/quizzes" component={QuizzesList} />
           <Route exact path="/quizzes/:id" component={QuizzesList} />
           <Route exact path="/createquiz" component={CreateQuiz} />
-          <Route exact path="/createquiz/:id" component={QuestionList} />
+          <Route exact path="/createquestions" component={QuestionList} />
         </div>
       </Router>
     );

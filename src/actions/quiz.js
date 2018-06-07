@@ -2,10 +2,18 @@ import * as request from "superagent";
 
 export const ADD_QUIZ = "ADD_QUIZ";
 
-export function addQuiz(quiz) {
-  console.log("action", quiz);
-  return {
-    type: "ADD_QUIZ",
-    payload: quiz
-  };
-}
+const baseUrl = "http://localhost:4001";
+
+export const addQuiz = quiz => (dispatch, getState) => {
+  const state = getState();
+
+  request
+    .post(`${baseUrl}/quizzes`)
+    .send(quiz)
+    .then(response =>
+      dispatch({
+        type: ADD_QUIZ,
+        payload: response.body
+      })
+    );
+};
