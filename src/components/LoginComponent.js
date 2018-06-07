@@ -1,17 +1,22 @@
 import React, { PureComponent } from "react";
 import * as request from 'superagent'
+// import SignUpComponent from './SignUpComponent'
+import {Link} from 'react-router-dom'
+import TextField from "@material-ui/core/TextField";
+import Paper from "@material-ui/core/Paper";
+import "../App.css";
 
-
+import { Redirect } from 'react-router-dom'
 
 let logInInfo = {}
-class Login extends PureComponent {
+class LoginComponent extends PureComponent {
 
 
 
 
   handleSubmit(evt){
     evt.preventDefault()
-    console.log(logInInfo)   
+    console.log(logInInfo, 'info needs to be pushed to auth when ready')   
   }
 
   handleChange(evt) {
@@ -21,25 +26,32 @@ class Login extends PureComponent {
 
 
     render() {
+      const textField = {
+        width: 300,
+        textAlign: 'center'
+      }
       return (
         <div className="logIn">
         <h1>Log In</h1>
+        <Paper className="styles" elevation={4}>
           <form onSubmit={this.handleSubmit}>
-            <p>login Name (e-mail)</p>
-            <input 
+            <p>Email:  </p>
+            <TextField
+                style={textField}
                 type="text"
                 className="input"
                 id="loginName"
-                
+                placeholder="Please enter email"
                 onChange={this.handleChange}
             />
-            <p>password</p>
+            <p>Password:</p>
             <div>
-            <input 
+            <TextField
+                style={textField} 
                 type="text"
                 className="input"
                 id="password"
-                
+                placeholder="Please enter your password"
                 onChange={this.handleChange}
             />
             </div>
@@ -51,11 +63,12 @@ class Login extends PureComponent {
                 >submit</button>
             </div>
           </form>
-          <a href='url'>don't have an account? sign up!</a>
+          </Paper>
+          <Link to='/signUp'>Sign up</Link>!
         </div>
       );
     }
   }
   
-  export default Login;
+  export default LoginComponent;
   
