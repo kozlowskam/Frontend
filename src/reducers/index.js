@@ -1,10 +1,10 @@
 import quizzes from './quizzes';
 import questions from "./questions";
-import quiz from './quiz'
+import fetchquiz from './fetchquiz'
 
 export default {
   quizzes,
-  quiz,
+  fetchquiz,
   questions
 }
 
