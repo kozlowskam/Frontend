@@ -1,10 +1,10 @@
 
-import React, { Component } from 'react';
-import './App.css';
-import QuizzesList from './components/quizzeslist';
+import React, { Component } from "react";
+import "./App.css";
 import Quiz from "./components/QuestionsList";
+import AppBar from "./components/AppBar";
+import QuizzesList from './components/quizzeslist';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
-
 
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
       
       <Router>
         <div className="App">
+      <AppBar />
           <Route exact path="/quizzes" component={QuizzesList} />
           <Route exact path="/quizzes/:id" component={QuizzesList} />
           <Route exact path="/quizzes/createquiz" component={Quiz} />
