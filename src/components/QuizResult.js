@@ -11,6 +11,7 @@ class QuizResult extends PureComponent {
       return (
         <div>
             You scored: {quizResult}
+            <Link to={"/quizzes"}> Home </Link>
         </div>
       );
     }
