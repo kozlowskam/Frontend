@@ -2,11 +2,13 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addQuestion } from "../actions/questions";
+import { addQuiz } from "../actions/questions";
 import { Link } from "react-router-dom";
 import QuestionForm from "./QuestionForm";
+import CreateQuizButton from "./CreateQuizButton";
 
 class Quiz extends PureComponent {
-  static propTypes = {
+  /*   static propTypes = {
     questions: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -19,17 +21,18 @@ class Quiz extends PureComponent {
       })
     ).isRequired
   };
-
+ */
   addQuestion = question => {
     this.props.addQuestion(question);
   };
 
   render() {
     const { questions } = this.props;
+    console.log(this.props);
     return (
       <div>
-        <h1> Quiz nr1 </h1>
-
+        <h1> Create New Quiz </h1>
+        <CreateQuizButton />
         <table>
           <thead>
             <tr>
@@ -41,13 +44,12 @@ class Quiz extends PureComponent {
           </thead>
           <tbody>
             {questions.map(item => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
+              <tr key={item.index}>
                 <td>{item.question}</td>
-                <td>{item.a}</td>
-                <td>{item.b}</td>
-                <td>{item.c}</td>
-                <td>{item.d}</td>
+                <td>{item.answer_a}</td>
+                <td>{item.answer_b}</td>
+                <td>{item.answer_c}</td>
+                <td>{item.answer_d}</td>
                 <td>{item.correct_answer}</td>
               </tr>
             ))}
