@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Paper from '@material-ui/core/Paper';
-import "../App.css";
+//import "../App.css";
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 //import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -8,6 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -58,9 +59,9 @@ class QuestionForm extends PureComponent {
         </div>
 
         <div>
-        <Grid container spacing={8} alignItems="inherit">
+        <Grid container spacing={8} alignItems="flex-end" className="test">
           <Grid item>
-          <Icon className="">A</Icon>
+          <Icon>A</Icon>
           </Grid>
           <Grid item>
           <TextField
@@ -135,7 +136,7 @@ class QuestionForm extends PureComponent {
                   onChange={this.handleChange}/>
         </div>
 
-        <button type="submit">Save</button>
+        <Button type="submit"variant="contained" component="span" color="primary">Save</Button>
       </form>
       </Paper>
       </div>
