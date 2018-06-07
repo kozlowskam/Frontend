@@ -42,6 +42,11 @@ class QuestionForm extends PureComponent {
 
   render() {
     const initialValues = this.props.initialValues || {};
+    
+    const gridStyle = {
+      display: 'flex',
+      justifyContent: 'center',
+    }
 
     return (
     <div>      
@@ -59,7 +64,7 @@ class QuestionForm extends PureComponent {
         </div>
 
         <div>
-        <Grid container spacing={8} alignItems="flex-end" className="test">
+        <Grid container spacing={8} alignItems="flex-end" style={gridStyle}>
           <Grid item>
           <Icon>A</Icon>
           </Grid>
@@ -76,7 +81,7 @@ class QuestionForm extends PureComponent {
         </div>
 
         <div>
-        <Grid container spacing={8} alignItems="flex-end">
+        <Grid container spacing={8} alignItems="flex-end" style={gridStyle}>
           <Grid item>
           <Icon>B</Icon>
           </Grid>
@@ -92,7 +97,7 @@ class QuestionForm extends PureComponent {
         </div>
 
         <div>
-        <Grid container spacing={8} alignItems="flex-end">
+        <Grid container spacing={8} alignItems="flex-end" style={gridStyle}>
           <Grid item>
           <Icon>C</Icon>
           </Grid>
@@ -108,7 +113,7 @@ class QuestionForm extends PureComponent {
         </div>
 
         <div>
-        <Grid  container spacing={8} alignItems="flex-end" alignContent="stretch">
+        <Grid  container spacing={8} alignItems="flex-end" style={gridStyle}>
           <Grid item>
           <Icon>D</Icon>
           </Grid>
