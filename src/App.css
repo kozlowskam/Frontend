@@ -10,3 +10,23 @@
     margin-left: auto;
     margin-right: auto
 };
+
+.avatar {
+  width: 4em
+}
+
+.MuiGrid-container-94 {
+  width: 100%;
+  display: inherit !important;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* .MuiGri.MuiGrid-spacing-xs-8-115 > .MuiGrid-item-95 {
+  margin-left: auto !important;
+}
+
+.Field1 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+} */
