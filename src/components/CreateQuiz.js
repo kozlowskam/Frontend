@@ -7,6 +7,22 @@ import QuestionForm from "./QuestionForm";
 import QuizForm from "./QuizForm";
 
 export class CreateQuiz extends PureComponent {
+  // createAndChooseQuiz(title, webhook) {
+  //   const { addQuiz, chosenQuiz } = this.props;
+
+  //   const quiz = {
+  //     title,
+  //     webhook
+  //   };
+  //   console.log(quiz);
+  //   return null;
+
+  //   return addQuiz(quiz).then(newQuiz => {
+  //     const quizId = newQuiz.payload.quiz.id;
+  //     chosenQuiz(quizId);
+  //   });
+  // }
+
   addQuiz = quiz => {
     this.props.addQuiz(quiz);
   };
