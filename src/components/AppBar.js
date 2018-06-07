@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 const styles = {
   root: {
     flexGrow: 1,
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: 'rgba(93, 231, 81, 0.849)'
   }
 };
 
@@ -19,7 +20,7 @@ function SimpleAppBar(props) {
       <AppBar position="static" color="primary" align="center">
         <Toolbar>
           <Typography className={classes.root} variant="title" color="inherit">
-            Ultimate Quiz'17'
+            Ultimate Quiz 17
           </Typography>
         </Toolbar>
       </AppBar>
