@@ -1,34 +1,30 @@
 import React, { PureComponent } from "react";
-//import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { Quiz } from "../lib/data.js";
 import { Quiz2 } from "../lib/data.js";
+import { takeQuiz } from "../actions/takequiz";
+const answer = [];
 
 class TakeQuiz extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      useranswer: "Hi adam!",
-      id: "hi Fong!"
-    };
+    this.state = {};
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // state = {
-  //   useranswer: "",
-  //   id: 1
-  // };
 
   handleInputChange(event) {
-    console.log(event.target.value);
-
     this.setState({
       useranswer: event.target.value,
-      id: event.target.name
+      id: Number(event.target.name) + 1
     });
-    console.log(this.state);
+    console.log(event.target.value);
+    console.log(event.target.value, "value");
+    answer.push(this.state);
+    console.log("this answer:", answer);
   }
   handleSubmit(event) {
-    alert("A name was submitted: ");
+    this.props.takeQuiz(answer);
 
     event.preventDefault();
   }
@@ -39,7 +35,6 @@ class TakeQuiz extends PureComponent {
         {Quiz2.questions.map((quetion, i) => (
           <div>
             {quetion.question} <br />
-            {console.log(i, "test")}
             <input
               name={i}
               type="radio"
@@ -80,7 +75,18 @@ class TakeQuiz extends PureComponent {
     );
   }
 }
-export default TakeQuiz;
+const mapStateToProps = function(state) {
+  return {
+    quizzes: state.quizzes
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    takeQuiz
+  }
+)(TakeQuiz);
 
 // export const Quiz2 = {
 //   id: 1,
