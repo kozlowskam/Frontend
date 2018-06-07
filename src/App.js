@@ -1,20 +1,16 @@
-
 import React, { Component } from "react";
 import "./App.css";
-import Quiz from "./components/QuestionsList";
-
+import QuestionList from "./components/QuestionsList";
+import CreateQuiz from "./components/CreateQuiz";
 import LoginComponent from "./components/LoginComponent"
 import SignUpComponent from "./components/SignUpComponent"
 import AppBar from "./components/AppBar";
-import QuizzesList from './components/quizzeslist';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
-
-
+import QuizzesList from "./components/quizzeslist";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      
       <Router>
         <div className="App">
       <AppBar />
@@ -25,7 +21,6 @@ class App extends Component {
           <Route exact path="/quizzes/createquiz" component={Quiz} />
         </div>
       </Router>
-
     );
   }
 }
