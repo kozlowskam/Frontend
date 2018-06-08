@@ -1,60 +1,77 @@
-import React, {PureComponent} from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import { fetchAllQuizzes, deleteQuiz, fetchQuiz, fetchResults } from '../actions/quizzes'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import {
+  fetchAllQuizzes,
+  deleteQuiz,
+  fetchQuiz,
+  fetchResults
+} from "../actions/quizzes";
 
 class QuizzesList extends PureComponent {
-    static propTypes = {
-      quizzes: PropTypes.arrayOf(PropTypes.shape({
+  static propTypes = {
+    quizzes: PropTypes.arrayOf(
+      PropTypes.shape({
         id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-      })).isRequired
-    }
+        title: PropTypes.string.isRequired
+      })
+    ).isRequired
+  };
 
-    componentWillMount() {
-      this.props.fetchAllQuizzes()
-    }
-  
-    deleteQuiz(quizId) {
-        this.props.deleteQuiz(quizId)
-    }
+  componentWillMount() {
+    this.props.fetchAllQuizzes();
+  }
 
-    fetchQuiz(quizId) {
-      this.props.fetchQuiz(quizId)
-    }
+  deleteQuiz(quizId) {
+    this.props.deleteQuiz(quizId);
+  }
 
-    fetchResults(quizId) {
-      this.props.fetchResults(quizId)
-    }
+  fetchQuiz(quizId) {
+    this.props.fetchQuiz(quizId);
+  }
 
-    render() {
-      const {quizzes} = this.props
-      return (
-        <div>
-          <h1>Welcome to TypeQuiz</h1>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Title</th>
-              </tr>
-            </thead>
-            <tbody>
-              { quizzes.map(quiz => (<tr key={quiz.id}>
+  fetchResults(quizId) {
+    this.props.fetchResults(quizId);
+  }
+
+  render() {
+    const { quizzes } = this.props;
+
+    const OrderedQuizzes = quizzes.sort(function(a, b) {
+      return a.id - b.id;
+    });
+
+    return (
+      <div>
+        <h1>Welcome to TypeQuiz</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            {OrderedQuizzes.map(quiz => (
+              <tr key={quiz.id}>
                 <td>{quiz.id}</td>
                 <td>
-                    <Link to={ `/quizzes/${quiz.id}` } onClick={ () => this.fetchQuiz(quiz.id)}>{quiz.title}</Link>
-
+                  <Link
+                    to={`/quizzes/${quiz.id}`}
+                    onClick={() => this.fetchQuiz(quiz.id)}
+                  >
+                    {quiz.title}
+                  </Link>
                 </td>
                 <td>
                   <button onClick={() => this.deleteQuiz(quiz.id)}>
                     Delete
                   </button>
                   <Link to={`/quizzes/${quiz.id}/results`}>
-                  <button onClick={() => this.fetchResults(quiz.id)}>
-                    Check Results
-                  </button>
+                    <button onClick={() => this.fetchResults(quiz.id)}>
+                      Check Results
+                    </button>
                   </Link>
                 </td>
               </tr>
@@ -84,5 +101,5 @@ export default connect(
     deleteQuiz,
     fetchResults,
     fetchQuiz
-  })(QuizzesList)
-
+  }
+)(QuizzesList);
