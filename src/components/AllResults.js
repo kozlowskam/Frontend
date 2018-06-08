@@ -1,17 +1,13 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class AllResults extends PureComponent {
-    
-    render() {  
-    const {allResults} = this.props
+  render() {
+    const { allResults } = this.props
 
-        
-      return (
-          
-        <div>
+    return (
+      <div>
         <h1>Quiz Results</h1>
         <table>
           <thead>
@@ -21,25 +17,27 @@ class AllResults extends PureComponent {
             </tr>
           </thead>
           <tbody>
-            { allResults.map(result => (<tr key={result.userId}>
-              <td>{result.userId}</td>
-              <td>{result.score}</td>
-            </tr>
-          ))}
-        </tbody>
+            {allResults.map(result => (
+              <tr key={result.userId}>
+                <td>{result.userId}</td>
+                <td>
+                  {result.score &&
+                    (result.score / result.input.length).toFixed(2) * 100}%
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
-        </div>
-      )}}
-    
- 
-  const mapStateToProps = state => {
-      console.log(state.allResults, "zsuzsi")
-      return {
-          allResults: state.allResults
-      }
+      </div>
+    )
   }
+}
 
+const mapStateToProps = state => {
+  console.log(state.allResults, 'zsuzsi')
+  return {
+    allResults: state.allResults
+  }
+}
 
-  
-  export default connect(mapStateToProps)(AllResults)
-
+export default connect(mapStateToProps)(AllResults)
