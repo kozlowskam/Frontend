@@ -20,7 +20,6 @@ class SignUpComponent extends Component {
             .post('http://localhost:4000/users')
             .send(signUpInfo)
             .then(result => {
-                console.log(result)
             })
       }
     

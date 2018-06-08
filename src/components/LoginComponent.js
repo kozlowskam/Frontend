@@ -1,24 +1,25 @@
 import React, { PureComponent } from "react";
 import * as request from 'superagent'
-// import SignUpComponent from './SignUpComponent'
 import {Link} from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import {logIn} from '../actions/logInSignUpAction'
 import {connect} from 'react-redux'
-import store from '../store'
+// import store from '../store'
 
 let logInInfo = {}
 class LoginComponent extends PureComponent {
-
-
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
 
   handleSubmit(evt){
     evt.preventDefault()
+    this.props.logIn(logInInfo) 
+    }      
+  
 
-    console.log(logInInfo, 'info needs to be pushed to auth when ready')   
-    this.props.logIn(logInInfo)    
-  }
 
   handleChange(evt) {
     const {id, value } = evt.target
@@ -27,6 +28,10 @@ class LoginComponent extends PureComponent {
 
 
     render() {
+      if (this.props.currentUser.jwt) return (
+         <Redirect to = "/quizzes"/>
+      )
+
       return (
         <div className="logIn">
         <h1>Log In</h1>
@@ -42,7 +47,7 @@ class LoginComponent extends PureComponent {
             <p>password</p>
             <div>
             <input 
-                type="text"
+                type="password"
                 className="input"
                 id="password"
                 
@@ -63,4 +68,11 @@ class LoginComponent extends PureComponent {
     }
   }
   
-  export default connect(null, {logIn})(LoginComponent)
+  const mapStateToProps = (state) => {
+    return {
+      currentUser : state.logInReducer
+    }
+  }
+
+
+  export default connect(mapStateToProps, {logIn})(LoginComponent)

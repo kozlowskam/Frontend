@@ -10,7 +10,6 @@ export const logIn = logInData => dispatch => {
     .post('http://localhost:4000/logins')
     .send(logInData)
     .then(result => {
-      console.log(result.body)
       dispatch({
         type: LOG_IN,
         payload: result.body
@@ -18,14 +17,9 @@ export const logIn = logInData => dispatch => {
     })  
     .catch(err=> {
       if (err.status === 400) {
-        // dispatch({      
-            
-        //   // type: USER_LOGIN_FAILED,
-        //   // payload: result.body
-        // })
+        alert('login failed')
       }
       else {
-        console.error(err)
       }
     })
   }
