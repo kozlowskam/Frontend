@@ -14,18 +14,21 @@ class SignUpComponent extends Component {
     fieldNames=["First name", "Last name", "Email", "Password",
      "Retype password"]
 
-
-
      handleSubmit = event => {
         event.preventDefault()
-            console.log(signUpInfo)
+        request
+            .post('http://localhost:4000/users')
+            .send(signUpInfo)
+            .then(result => {
+                console.log(result)
+            })
       }
     
       handleChangeName = event => {
         const { name, value } = event.target
         event.target.setCustomValidity('')
         if (!event.target.validity.valid) {
-          event.target.setCustomValidity('Please enter your name')
+          event.target.setCustomValidity('Please enter your first name')
         }
         signUpInfo[name] = value
       }
@@ -34,7 +37,7 @@ class SignUpComponent extends Component {
         const { name, value } = event.target
         event.target.setCustomValidity('')
         if (!event.target.validity.valid) {
-          event.target.setCustomValidity('Please enter your Lastname')
+          event.target.setCustomValidity('Please enter your last name')
         }
         signUpInfo[name] = value
       }
@@ -146,6 +149,7 @@ class SignUpComponent extends Component {
                 id="SignUpButton"
                 color="primary"
                 >Sign Up!</Button>
+
                 </form>
                 </Paper>
             </div>
