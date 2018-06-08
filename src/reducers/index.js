@@ -9,6 +9,5 @@ export default {
   quiz,
   quizzes,
   fetchquiz,
-  questions,
   takeQuiz
 };
