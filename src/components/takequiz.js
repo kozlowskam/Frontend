@@ -1,42 +1,38 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Quiz } from "../lib/data.js";
-import { Quiz2 } from "../lib/data.js";
-import { takeQuiz } from "../actions/takequiz";
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { Quiz } from '../lib/data.js'
+import { Quiz2 } from '../lib/data.js'
+import { takeQuiz } from '../actions/takequiz'
 
-import { fetchQuiz } from "../actions/quizzes";
+import { fetchQuiz } from '../actions/quizzes'
 
-import { Link, Redirect } from "react-router-dom";
-
-const answer = [];
+const answer = []
 
 class TakeQuiz extends PureComponent {
   constructor(props) {
-    super(props);
-    this.state = {
-      redirect: false
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    super(props)
+    this.state = {}
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
+    const { id } = this.props.match.params
 
     if (!this.props.quiz) {
-      this.props.fetchQuiz(id);
+      this.props.fetchQuiz(id)
     }
   }
 
   handleInputChange(event) {
-    console.log("------", this.props.quetions, "-----");
+    console.log('------', this.props.quetions, '-----')
     //const ddd = this.props.quetions;
     //ddd.map(x => console.log(x, "jo"));
     this.setState(
       {
         ...this.state,
-        [Number(event.target.name) + 1]: {
-          id: Number(event.target.name) + 1,
+        [event.target.name]: {
+          id: event.target.name,
           userAnswer: event.target.value
         }
         // useranswer: event.target.value,
@@ -46,16 +42,14 @@ class TakeQuiz extends PureComponent {
       //   answer.push(this.state);
       //   console.log(this.state);
       // }.bind(this)
-    );
-    console.log(this.state);
+    )
+    console.log(this.state)
   }
   handleSubmit(event) {
+    this.props.takeQuiz(this.props.match.params.id, this.state)
+    console.log(answer, '__')
 
-    this.props.takeQuiz(this.props.match.params.id, this.state);
-    console.log(answer, "__");
-
-    event.preventDefault();
-
+    event.preventDefault()
   }
 
   render() {
@@ -68,7 +62,7 @@ class TakeQuiz extends PureComponent {
               <div>
                 {question.question} <br />
                 <input
-                  name={i}
+                  name={question.id}
                   type="radio"
                   value="A"
                   onChange={this.handleInputChange}
@@ -78,23 +72,23 @@ class TakeQuiz extends PureComponent {
                 }
                 {question.A} <br />
                 <input
-                  name={i}
+                  name={question.id}
                   type="radio"
-                  value={"B"}
+                  value={'B'}
                   onChange={this.handleInputChange}
                 />
                 {question.B} <br />
                 <input
-                  name={i}
+                  name={question.id}
                   type="radio"
-                  value={"C"}
+                  value={'C'}
                   onChange={this.handleInputChange}
                 />
                 {question.C} <br />
                 <input
-                  name={i}
+                  name={question.id}
                   type="radio"
-                  value={"D"}
+                  value={'D'}
                   onChange={this.handleInputChange}
                 />
                 {question.D} <br />
@@ -102,20 +96,18 @@ class TakeQuiz extends PureComponent {
               </div>
             ))}
 
-
             <input type="submit" value="Submit" />
           </form>
         )}
       </div>
-
-    );
+    )
   }
 }
 const mapStateToProps = ({ fetchquiz }) => {
   return {
     quiz: fetchquiz
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
@@ -123,7 +115,7 @@ export default connect(
     takeQuiz,
     fetchQuiz
   }
-)(TakeQuiz);
+)(TakeQuiz)
 
 //send to zusi
 // {1:“a”} and now it is {userAnswer:“a”, id:“1”}
