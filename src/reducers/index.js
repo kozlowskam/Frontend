@@ -6,6 +6,7 @@ import logInReducer from "./logInReducer"
 import signUpReducer from "./signUpReducer"
 import takeQuiz from "./takeQuiz";
 import quizResult from './quizResult';
+import allResults from './fetchresults'
 
 export default {
   logInReducer,
@@ -15,5 +16,6 @@ export default {
   quizzes,
   fetchquiz,
   takeQuiz,
-  quizResult
+  quizResult,
+  allResults
 };
