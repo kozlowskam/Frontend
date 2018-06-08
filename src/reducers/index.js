@@ -3,6 +3,7 @@ import questions from "./questions";
 import fetchquiz from "./fetchquiz";
 import quiz from "./quiz";
 import takeQuiz from "./takeQuiz";
+import quizResult from './quizResult';
 
 export default {
   questions,
@@ -10,5 +11,6 @@ export default {
   quizzes,
   fetchquiz,
   questions,
-  takeQuiz
+  takeQuiz,
+  quizResult
 };
