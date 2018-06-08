@@ -5,11 +5,12 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const styles = {
   root: {
     flexGrow: 1,
-    textAlign: 'center'
+    textAlign: "center"
   }
 };
 
@@ -22,7 +23,7 @@ function SimpleAppBar(props) {
           <Typography className={classes.root} variant="title" color="inherit">
             Ultimate Quiz 17
           </Typography>
-          <Link to={"/quizzes"}> Home </Link>
+          <Button href="/quizzes">HOME</Button>
         </Toolbar>
       </AppBar>
     </div>
