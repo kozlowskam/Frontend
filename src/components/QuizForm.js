@@ -17,14 +17,16 @@ class QuizForm extends PureComponent {
   }
 
   handleSubmit = e => {
-    console.log(this.state);
     e.preventDefault();
     this.props.onSubmit(this.state);
+    this.setState({
+      title: "",
+      webhook: ""
+    });
   };
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(event.target.value);
 
     this.setState({
       [name]: value,

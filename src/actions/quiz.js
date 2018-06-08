@@ -2,7 +2,7 @@ import * as request from "superagent";
 
 export const ADD_QUIZ = "ADD_QUIZ";
 
-const baseUrl = "http://localhost:4001";
+const baseUrl = "http://localhost:4000";
 
 export const addQuiz = quiz => (dispatch, getState) => {
   const state = getState();
