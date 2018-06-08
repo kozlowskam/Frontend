@@ -4,6 +4,7 @@ import { Quiz } from "../lib/data.js";
 import { Quiz2 } from "../lib/data.js";
 import { takeQuiz } from "../actions/takequiz";
 //test
+//adsf
 const answer = [];
 
 class TakeQuiz extends PureComponent {
@@ -17,7 +18,7 @@ class TakeQuiz extends PureComponent {
   handleInputChange(event) {
     this.setState(
       {
-        useranswer: event.target.value,
+        userAnswer: event.target.value,
         id: Number(event.target.name) + 1
       },
       function() {
@@ -31,12 +32,10 @@ class TakeQuiz extends PureComponent {
     console.log(answer, "__");
 
     event.preventDefault();
-
   }
 
   render() {
     return (
-
       <form onSubmit={this.handleSubmit}>
         {Quiz2.questions.map((quetion, i) => (
           <div>
@@ -98,3 +97,19 @@ export default connect(
 // {1:“a”} and now it is {userAnswer:“a”, id:“1”}
 // [{"userAnswer":"B","id":1},{"userAnswer":"A","id":2},{"userAnswer":"B","id":3}]
 
+// function search(nameKey, myArray){
+//   for (var i=0; i < myArray.length; i++) {
+//       if (myArray[i].name === nameKey) {
+//           return myArray[i];
+//       }
+//   }
+// }
+
+// var array = [
+//   { name:"string 1", value:"this", other: "that" },
+//   { name:"string 2", value:"this", other: "that" }
+// ];
+
+// var resultObject = search("string 1", array);
+
+///Users/fong/code/week7GroupsProject/mss/Frontend/src/components/CreateQuiz.js
