@@ -24,11 +24,19 @@ class QuestionForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
+    this.setState({
+      question: "",
+      initialValues: "",
+      A: "",
+      B: "",
+      C: "",
+      D: "",
+      selectedValue: ""
+    });
   };
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(event.target.value);
 
 
     const { name , value } = event.target;
