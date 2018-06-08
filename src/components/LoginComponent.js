@@ -17,7 +17,7 @@ class LoginComponent extends PureComponent {
     evt.preventDefault()
 
     console.log(logInInfo, 'info needs to be pushed to auth when ready')   
-    logIn(logInInfo)
+    this.props.logIn(logInInfo)
     
   }
 
@@ -31,7 +31,7 @@ class LoginComponent extends PureComponent {
       return (
         <div className="logIn">
         <h1>Log In</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit.bind(this)}>
             <p>login Name (e-mail)</p>
             <input 
                 type="text"

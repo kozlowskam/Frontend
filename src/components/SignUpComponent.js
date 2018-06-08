@@ -8,11 +8,14 @@ class SignUpComponent extends Component {
     fieldNames=["First name", "Last name", "Email", "Password",
      "Retype password"]
 
-
-
      handleSubmit = event => {
         event.preventDefault()
-            console.log(signUpInfo)
+        request
+            .post('http://localhost:4000/users')
+            .send(signUpInfo)
+            .then(result => {
+                console.log(result)
+            })
       }
     
       handleChangeName = event => {
@@ -127,7 +130,7 @@ class SignUpComponent extends Component {
                         signUpInfo.password !== signUpInfo.confirmPassword && (
                         <p style={{ color: 'red' }}>The passwords do not match!</p>
                         )}
-                    <button type="submit">Sign Up</button>
+                    <button onClick={window.location.href('/login')} type="submit">Sign Up</button>
                 </form>
             </div>
 

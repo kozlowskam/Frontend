@@ -5,7 +5,7 @@ export const SIGN_UP = "SIGN_UP";
 
 
 
-export const logIn = logInData => (dispatch) => 
+export const logIn = logInData => dispatch => {
   request
     .post('http://localhost:4000/logins')
     .send(logInData)
@@ -14,7 +14,6 @@ export const logIn = logInData => (dispatch) =>
       dispatch({
         type: LOG_IN,
         payload: result.body
-
       })
     })  
     .catch(err=> {
@@ -29,5 +28,5 @@ export const logIn = logInData => (dispatch) =>
         console.error(err)
       }
     })
-
+  }
 
