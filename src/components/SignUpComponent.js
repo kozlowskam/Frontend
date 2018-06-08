@@ -130,7 +130,7 @@ class SignUpComponent extends Component {
                         signUpInfo.password !== signUpInfo.confirmPassword && (
                         <p style={{ color: 'red' }}>The passwords do not match!</p>
                         )}
-                    <button onClick={window.location.href('/login')} type="submit">Sign Up</button>
+                    <button onClick={() => window.location.href = '/login'} type="submit">Sign Up</button>
                 </form>
             </div>
 
