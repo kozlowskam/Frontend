@@ -22,11 +22,19 @@ class QuestionForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
+    this.setState({
+      question: "",
+      initialValues: "",
+      A: "",
+      B: "",
+      C: "",
+      D: "",
+      selectedValue: ""
+    });
   };
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(event.target.value);
 
     this.setState({
       [name]: value,
@@ -178,13 +186,8 @@ class QuestionForm extends PureComponent {
               />
             </div>
 
-            <Button
-              type="submit"
-              variant="contained"
-              component="span"
-              color="primary"
-            >
-              Save
+            <Button type="submit" variant="contained" color="primary">
+              ADD QUESTION
             </Button>
           </form>
         </Paper>

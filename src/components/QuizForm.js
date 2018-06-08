@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Button from "@material-ui/core/Button";
 
 class QuizForm extends PureComponent {
   constructor(props) {
@@ -17,14 +18,16 @@ class QuizForm extends PureComponent {
   }
 
   handleSubmit = e => {
-    console.log(this.state);
     e.preventDefault();
     this.props.onSubmit(this.state);
+    this.setState({
+      title: "",
+      webhook: ""
+    });
   };
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(event.target.value);
 
     this.setState({
       [name]: value,
@@ -64,8 +67,10 @@ class QuizForm extends PureComponent {
                 </Grid>
               </Grid>
             </div>
-
-            <button type="submit">Create Quiz</button>
+            <br />
+            <Button type="submit" variant="contained" color="primary">
+              Save
+            </Button>
           </form>
         </Paper>
       </div>

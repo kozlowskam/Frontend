@@ -9,8 +9,8 @@ import AppBar from "./components/AppBar";
 import QuizzesList from "./components/quizzeslist";
 import TakeQuiz from "./components/takequiz";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-
 import Takequiz from "./components/takequiz";
+import quizResult from './components/QuizResult'
 
 class App extends Component {
   render() {
@@ -25,6 +25,11 @@ class App extends Component {
           <Route exact path="/login" component={LoginComponent} />
           <Route exact path="/signUp" component={SignUpComponent} />
           <Route exact path="/quizzes" component={QuizzesList} />
+
+
+          <Route exact path="/quizzes/:id/result" component={quizResult} />
+
+
         </div>
       </Router>
     );

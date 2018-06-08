@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 const styles = {
   root: {
@@ -21,6 +22,7 @@ function SimpleAppBar(props) {
           <Typography className={classes.root} variant="title" color="inherit">
             Ultimate Quiz 17
           </Typography>
+          <Link to={"/quizzes"}> Home </Link>
         </Toolbar>
       </AppBar>
     </div>

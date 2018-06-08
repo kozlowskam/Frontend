@@ -1,7 +1,7 @@
 import * as request from "superagent";
 
 export const ADD_QUESTION = "ADD_QUESTION";
-const baseUrl = "http://localhost:4001";
+const baseUrl = "http://localhost:4000";
 
 // export const addQuestion = question => {
 //   return {

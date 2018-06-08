@@ -2,37 +2,42 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addQuiz } from "../actions/quiz";
+import { addQuestion } from "../actions/questions";
 import { Link } from "react-router-dom";
+import { fetchAllQuizzes } from "../actions/quizzes";
 import QuestionForm from "./QuestionForm";
 import QuizForm from "./QuizForm";
+import Button from "@material-ui/core/Button";
 
 export class CreateQuiz extends PureComponent {
-  // createAndChooseQuiz(title, webhook) {
-  //   const { addQuiz, chosenQuiz } = this.props;
-
-  //   const quiz = {
-  //     title,
-  //     webhook
-  //   };
-  //   console.log(quiz);
-  //   return null;
-
-  //   return addQuiz(quiz).then(newQuiz => {
-  //     const quizId = newQuiz.payload.quiz.id;
-  //     chosenQuiz(quizId);
-  //   });
-  // }
+  componentWillMount() {
+    this.props.fetchAllQuizzes();
+  }
 
   addQuiz = quiz => {
     this.props.addQuiz(quiz);
   };
 
+  addQuestion = question => {
+    let lastQuiz = { ...this.props.quizzes[this.props.quizzes.length - 1] };
+    question = { ...question, quiz: lastQuiz.id };
+    this.props.addQuestion(question);
+  };
+
   render() {
-    const { quiz } = this.props;
-    console.log(this.props);
+    const { questions, quiz, quizzes } = this.props;
+
     return (
       <div>
+        <h2> Create your quiz </h2>
         <QuizForm onSubmit={this.addQuiz} />
+        <br />
+        <QuestionForm onSubmit={this.addQuestion} />
+        <br />
+        <Button type="submit" variant="contained" color="primary">
+          <Link to={"/quizzes"}> DONE </Link>
+        </Button>
+        <br /> <br />
       </div>
     );
   }
@@ -40,11 +45,17 @@ export class CreateQuiz extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    quiz: state.quiz
+    quiz: state.quiz,
+    questions: state.questions,
+    quizzes: state.quizzes
   };
 };
 
 export default connect(
   mapStateToProps,
-  { addQuiz }
+  {
+    addQuiz,
+    fetchAllQuizzes,
+    addQuestion
+  }
 )(CreateQuiz);
