@@ -1,29 +1,35 @@
 import {TAKE_QUIZ} from '../actions/takequiz'
 
-const yourResult = '7/10'
+const yourResult = {
+    id: 60,
+    input: [
+        {
+            id: 1,
+            userAnswer: 'a'
+        },
+        {
+            id: 2,
+            userAnswer: 'b'
+        },
+        {
+            id: 3,
+            userAnswer: 'c'
+        }
+    ],
+    quizId: 1,
+    score: 3,
+    userId: 1
+}
+// const response.body
 
-export default function(state = '', action) {
+export default function(state = {}, action) {
     switch (action.type) {
+
         case TAKE_QUIZ:
-        console.log(yourResult)
-        return yourResult;
+            return yourResult;
+            // action.payload
 
         default:
             return state
     }
 }
-
-
-// import { ADD_QUIZ } from "../actions/quiz";
-
-// const quiz = {};
-
-// export default function(state = quiz, action) {
-//   switch (action.type) {
-//     case ADD_QUIZ:
-//       return action.payload;
-
-//     default:
-//       return state;
-//   }
-// }
