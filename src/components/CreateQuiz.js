@@ -19,8 +19,9 @@ export class CreateQuiz extends PureComponent {
   };
 
   addQuestion = question => {
+    const { quiz } = this.props;
     let lastQuiz = { ...this.props.quizzes[this.props.quizzes.length - 1] };
-    question = { ...question, quiz: lastQuiz.id };
+    question = { ...question, quiz: quiz.id };
     this.props.addQuestion(question);
   };
 
@@ -34,9 +35,8 @@ export class CreateQuiz extends PureComponent {
         <br />
         <QuestionForm onSubmit={this.addQuestion} />
         <br />
-        <Button 
-          type="submit" 
-          href="/quizzes">DONE
+        <Button type="submit" href="/quizzes">
+          DONE
         </Button>
         <br /> <br />
       </div>
