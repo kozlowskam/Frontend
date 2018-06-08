@@ -28,7 +28,7 @@ class LoginComponent extends PureComponent {
 
 
     render() {
-      if (this.props.currentUser.jwt) return (
+      if (this.props.currentUser.jwt && this.props.currentUser.jwt !== {}) return (
          <Redirect to = "/quizzes"/>
       )
 
