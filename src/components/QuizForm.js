@@ -20,10 +20,6 @@ class QuizForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
-    this.setState({
-      title: "",
-      webhook: ""
-    });
   };
 
   handleChange = event => {
@@ -68,9 +64,7 @@ class QuizForm extends PureComponent {
               </Grid>
             </div>
             <br />
-            <Button type="submit" >
-              Save
-            </Button>
+            <Button type="submit">Save</Button>
           </form>
         </Paper>
       </div>
