@@ -186,13 +186,8 @@ class QuestionForm extends PureComponent {
               />
             </div>
 
-            <Button
-              type="submit"
-              variant="contained"
-              component="span"
-              color="primary"
-            >
-              Save
+            <Button type="submit" variant="contained" color="primary">
+              ADD QUESTION
             </Button>
           </form>
         </Paper>

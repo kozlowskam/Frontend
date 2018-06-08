@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { fetchAllQuizzes } from "../actions/quizzes";
 import QuestionForm from "./QuestionForm";
 import QuizForm from "./QuizForm";
+import Button from "@material-ui/core/Button";
 
 export class CreateQuiz extends PureComponent {
   componentWillMount() {
@@ -19,7 +20,6 @@ export class CreateQuiz extends PureComponent {
 
   addQuestion = question => {
     let lastQuiz = { ...this.props.quizzes[this.props.quizzes.length - 1] };
-    console.log(this.props.quizzes.length);
     question = { ...question, quiz: lastQuiz.id };
     this.props.addQuestion(question);
   };
@@ -33,6 +33,11 @@ export class CreateQuiz extends PureComponent {
         <QuizForm onSubmit={this.addQuiz} />
         <br />
         <QuestionForm onSubmit={this.addQuestion} />
+        <br />
+        <Button type="submit" variant="contained" color="primary">
+          <Link to={"/quizzes"}> DONE </Link>
+        </Button>
+        <br /> <br />
       </div>
     );
   }
