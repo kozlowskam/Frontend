@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { Quiz } from '../lib/data.js'
 import { Quiz2 } from '../lib/data.js'
 import { takeQuiz } from '../actions/takequiz'
-
 import { fetchQuiz } from '../actions/quizzes'
+import yesBaby from '../yes.jpg'
 
 const answer = []
 
@@ -58,10 +58,13 @@ class TakeQuiz extends PureComponent {
         {!this.props.quiz && <div>Loading...</div>}
         {this.props.quiz &&
           this.props.takequiz && (
-            <h1>
-              You scored {this.props.takequiz.score} out of{' '}
-              {this.props.quiz.questions.length}!!
-            </h1>
+            <div>
+              <h1>
+                You scored {this.props.takequiz.score} out of{' '}
+                {this.props.quiz.questions.length}!!
+              </h1>
+              <img src={yesBaby} alt="" />
+            </div>
           )}
         {this.props.quiz &&
           !this.props.takequiz && (
