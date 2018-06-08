@@ -20,16 +20,16 @@ const styles = {
 // }
 export class SimpleAppBar extends PureComponent {
   render() {
-    const { classes, logInReducer } = this.props;
+    const { classes } = this.props;
     return (
       <div>
         <AppBar position="static" color="primary" align="center">
           <Toolbar>
-            <Typography variant="title" color="inherit">
-              Ultimate Quiz 17
-            </Typography>
-            {logInReducer &&
-              logInReducer.jwt && <Button href="/quizzes">HOME</Button>}
+            <a href="/quizzes">
+              <Typography variant="title" color="inherit">
+                Ultimate Quiz 17
+              </Typography>
+            </a>
           </Toolbar>
         </AppBar>
       </div>
