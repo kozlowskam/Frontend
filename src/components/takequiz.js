@@ -56,56 +56,65 @@ class TakeQuiz extends PureComponent {
     return (
       <div>
         {!this.props.quiz && <div>Loading...</div>}
-        {this.props.quiz && (
-          <form onSubmit={this.handleSubmit}>
-            {this.props.quiz.questions.map((question, i) => (
-              <div>
-                {question.question} <br />
-                <input
-                  name={question.id}
-                  type="radio"
-                  value="A"
-                  onChange={this.handleInputChange}
-                />
-                {
-                  //{"userAnswer":"b","id":3}
-                }
-                {question.A} <br />
-                <input
-                  name={question.id}
-                  type="radio"
-                  value={'B'}
-                  onChange={this.handleInputChange}
-                />
-                {question.B} <br />
-                <input
-                  name={question.id}
-                  type="radio"
-                  value={'C'}
-                  onChange={this.handleInputChange}
-                />
-                {question.C} <br />
-                <input
-                  name={question.id}
-                  type="radio"
-                  value={'D'}
-                  onChange={this.handleInputChange}
-                />
-                {question.D} <br />
-                <br />
-              </div>
-            ))}
+        {this.props.quiz &&
+          this.props.takequiz && (
+            <h1>
+              You scored {this.props.takequiz.score} out of{' '}
+              {this.props.quiz.questions.length}!!
+            </h1>
+          )}
+        {this.props.quiz &&
+          !this.props.takequiz && (
+            <form onSubmit={this.handleSubmit}>
+              {this.props.quiz.questions.map((question, i) => (
+                <div>
+                  {question.question} <br />
+                  <input
+                    name={question.id}
+                    type="radio"
+                    value="A"
+                    onChange={this.handleInputChange}
+                  />
+                  {
+                    //{"userAnswer":"b","id":3}
+                  }
+                  {question.A} <br />
+                  <input
+                    name={question.id}
+                    type="radio"
+                    value={'B'}
+                    onChange={this.handleInputChange}
+                  />
+                  {question.B} <br />
+                  <input
+                    name={question.id}
+                    type="radio"
+                    value={'C'}
+                    onChange={this.handleInputChange}
+                  />
+                  {question.C} <br />
+                  <input
+                    name={question.id}
+                    type="radio"
+                    value={'D'}
+                    onChange={this.handleInputChange}
+                  />
+                  {question.D} <br />
+                  <br />
+                </div>
+              ))}
 
-            <input type="submit" value="Submit" />
-          </form>
-        )}
+              <input type="submit" value="Submit" />
+            </form>
+          )}
       </div>
     )
   }
 }
-const mapStateToProps = ({ fetchquiz }) => {
+const mapStateToProps = ({ fetchquiz, takeQuiz }) => {
   return {
-    quiz: fetchquiz
+    quiz: fetchquiz,
+    takequiz: takeQuiz
   }
 }
 
