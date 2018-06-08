@@ -14,7 +14,6 @@ export default {
   quiz,
   quizzes,
   fetchquiz,
-  questions,
   takeQuiz,
   quizResult
 };
