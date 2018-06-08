@@ -1,9 +1,11 @@
 import { ADD_QUESTION } from "../actions/questions";
 
-export default function(state = [], action) {
+const question = {};
+
+export default function(state = question, action) {
   switch (action.type) {
     case ADD_QUESTION:
-      return [...state, action.payload];
+      return action.payload;
 
     default:
       return state;

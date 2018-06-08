@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addQuestion } from "../actions/questions";
 import { Link } from "react-router-dom";
+import { fetchAllQuizzes } from "../actions/quizzes";
 import QuestionForm from "./QuestionForm";
 import QuizForm from "./QuizForm";
 
@@ -21,10 +22,9 @@ class QuestionList extends PureComponent {
     ).isRequired
   };
  */
-
-  addQuiz = quiz => {
-    this.props.addQuiz(quiz);
-  };
+  componentWillMount() {
+    this.props.fetchAllQuizzes();
+  }
 
   addQuestion = question => {
     let lastQuiz = { ...this.props.quizzes[this.props.quizzes.length - 1] };
@@ -34,13 +34,12 @@ class QuestionList extends PureComponent {
   };
 
   render() {
-    const { questions, quiz } = this.props;
+    const { questions, quiz, quizzes } = this.props;
     console.log(this.props);
     return (
       <div>
-        <h2> Create your questions </h2>
-        <QuizForm onSubmit={this.addQuiz} />
-        <table>
+        <h2> Create your quiz </h2>
+        {/* <table>
           <thead>
             <tr>
               <th>#</th>
@@ -61,7 +60,7 @@ class QuestionList extends PureComponent {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
 
         <h1>Create a new question </h1>
         <QuestionForm onSubmit={this.addQuestion} />
@@ -73,13 +72,14 @@ class QuestionList extends PureComponent {
 const mapStateToProps = function(state) {
   return {
     questions: state.questions,
-    quiz: state.quiz
+    quizzes: state.quizzes
   };
 };
 
 export default connect(
   mapStateToProps,
   {
+    fetchAllQuizzes,
     addQuestion
   }
 )(QuestionList);
