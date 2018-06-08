@@ -1,13 +1,13 @@
-import * as request from "superagent";
+import * as request from 'superagent'
 
-export const TAKE_QUIZ = "TAKE_QUIZ";
-const baseUrl = "http://localhost:4000";
+export const TAKE_QUIZ = 'TAKE_QUIZ'
+const baseUrl = 'http://localhost:4000'
 
 export const takeQuiz = (id, responses) => dispatch => {
   const response = {
-    quizId: id,
+    quizId: parseInt(id),
     input: Object.values(responses)
-  };
+  }
   request
     .post(`${baseUrl}/responses`)
     .send(response)
@@ -15,8 +15,11 @@ export const takeQuiz = (id, responses) => dispatch => {
       dispatch({
         type: TAKE_QUIZ,
         payload: result.body
-      });
-    });
-  console.log("From the action controller:", response);
-  console.log("From the action controller:", responses);
-};
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  console.log('From the action controller:', response)
+  console.log('From the action controller:', responses)
+}
