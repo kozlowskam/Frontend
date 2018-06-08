@@ -148,6 +148,7 @@ class SignUpComponent extends Component {
                 type="submit"
                 id="SignUpButton"
                 color="primary"
+                onClick={() => window.location.href = '/login'} 
                 >Sign Up!</Button>
 
                 </form>
