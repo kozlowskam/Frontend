@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -6,6 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
 
 const styles = {
   root: {
@@ -14,24 +15,35 @@ const styles = {
   }
 };
 
-function SimpleAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="primary" align="center">
-        <Toolbar>
-          <Typography className={classes.root} variant="title" color="inherit">
-            Ultimate Quiz 17
-          </Typography>
-          <Button href="/quizzes">HOME</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+// currentUser () => {
+//   const logInReducer=this.props
+// }
+export class SimpleAppBar extends PureComponent {
+  render() {
+    const { classes, logInReducer } = this.props;
+    return (
+      <div>
+        <AppBar position="static" color="primary" align="center">
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              Ultimate Quiz 17
+            </Typography>
+            {logInReducer &&
+              logInReducer.jwt && <Button href="/quizzes">HOME</Button>}
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 SimpleAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SimpleAppBar);
+const mapStateToProps = ({ logInReducer }) => {
+  return {
+    logInReducer
+  };
+};
+export default connect(mapStateToProps)(SimpleAppBar);

@@ -1,7 +1,9 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import {
   fetchAllQuizzes,
   deleteQuiz,
@@ -44,44 +46,54 @@ class QuizzesList extends PureComponent {
 
     return (
       <div>
-        <h1>Welcome to TypeQuiz</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Title</th>
-            </tr>
-          </thead>
-          <tbody>
-            {OrderedQuizzes.map(quiz => (
-              <tr key={quiz.id}>
-                <td>{quiz.id}</td>
-                <td>
-                  <Link
-                    to={`/quizzes/${quiz.id}`}
-                    onClick={() => this.fetchQuiz(quiz.id)}
-                  >
-                    {quiz.title}
-                  </Link>
-                </td>
-                <td>
-                  <button onClick={() => this.deleteQuiz(quiz.id)}>
-                    Delete
-                  </button>
-                  <Link to={`/quizzes/${quiz.id}/results`}>
-                    <button onClick={() => this.fetchResults(quiz.id)}>
-                      Check Results
-                    </button>
-                  </Link>
-                </td>
+        <Paper className="styles" elevation={4}>
+          <h1>Welcome to TypeQuiz</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {OrderedQuizzes.map(quiz => (
+                <tr key={quiz.id}>
+                  <td>{quiz.id}</td>
+                  <td>
+                    <Link
+                      className="link"
+                      to={`/quizzes/${quiz.id}`}
+                      onClick={() => this.fetchQuiz(quiz.id)}
+                    >
+                      {quiz.title}
+                    </Link>
+                  </td>
+                  <td>
+                    <Button
+                      className="deleteButton"
+                      onClick={() => this.deleteQuiz(quiz.id)}
+                    >
+                      Delete
+                    </Button>
+                    <Link to={`/quizzes/${quiz.id}/results`}>
+                      <Button onClick={() => this.fetchResults(quiz.id)}>
+                        Check Results
+                      </Button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        <Link to={"/createquiz"} target="_blank">
-          Create a new quiz!
-        </Link>
+          <Button
+            className="createQuizButton"
+            href={"/createquiz"}
+            target="_blank"
+          >
+            Create a new quiz!
+          </Button>
+        </Paper>
       </div>
     );
   }
