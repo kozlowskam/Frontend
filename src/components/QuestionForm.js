@@ -1,12 +1,16 @@
 import React, { PureComponent } from "react";
-import Paper from "@material-ui/core/Paper";
-import "../App.css";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
+import Paper from '@material-ui/core/Paper';
+//import "../App.css";
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+//import AccountCircle from '@material-ui/icons/AccountCircle';
+import Icon from '@material-ui/core/Icon';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import Button from '@material-ui/core/Button';
+
+
 
 class QuestionForm extends PureComponent {
   constructor(props) {
@@ -24,16 +28,27 @@ class QuestionForm extends PureComponent {
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(event.target.value)
+    console.log(event.target.value);
 
-    this.setState({
-      [name]: value,
-      selectedValue: event.target.value
-    });
+
+    const { name , value } = event.target;
+
+
+   this.setState ({
+     [name]: value,
+     selectedValue: event.target.value
+})
+   
+
   };
 
   render() {
     const initialValues = this.props.initialValues || {};
+    
+    const gridStyle = {
+      display: 'flex',
+      justifyContent: 'center',
+    }
 
     return (
       <div>
@@ -58,8 +73,8 @@ class QuestionForm extends PureComponent {
                 <Grid item>
                   <TextField
                     label="First answer here"
-                    name="answer_a"
-                    value={this.state.answer_a || initialValues.answer_a || ""}
+                    name="A"
+                    value={this.state.A || initialValues.A || ""}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -74,8 +89,8 @@ class QuestionForm extends PureComponent {
                 <Grid item>
                   <TextField
                     label="Second answer here"
-                    name="answer_b"
-                    value={this.state.answer_b || initialValues.answer_b || ""}
+                    name="B"
+                    value={this.state.B || initialValues.B || ""}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -90,8 +105,8 @@ class QuestionForm extends PureComponent {
                 <Grid item>
                   <TextField
                     label="Third answer here"
-                    name="answer_c"
-                    value={this.state.answer_c || initialValues.answer_c || ""}
+                    name="C"
+                    value={this.state.C || initialValues.C || ""}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -106,8 +121,8 @@ class QuestionForm extends PureComponent {
                 <Grid item>
                   <TextField
                     label="Fourth answer here"
-                    name="answer_d"
-                    value={this.state.answer_d || initialValues.answer_d || ""}
+                    name="D"
+                    value={this.state.D || initialValues.D || ""}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -117,35 +132,35 @@ class QuestionForm extends PureComponent {
             <div>
               <FormLabel component="legend">Correct Answer</FormLabel>
               <FormControlLabel
-                value="answer_a"
-                name="correct_answer"
+                value="A"
+                name="correctAnswer"
                 control={<Radio />}
                 label="Answer A"
-                checked={this.state.selectedValue === "answer_a"}
+                checked={this.state.selectedValue === "A"}
                 onChange={this.handleChange}
               />
               <FormControlLabel
-                value="answer_b"
-                name="correct_answer"
+                value="B"
+                name="correctAnswer"
                 control={<Radio />}
                 label="Answer B"
-                checked={this.state.selectedValue === "answer_b"}
+                checked={this.state.selectedValue === "B"}
                 onChange={this.handleChange}
               />
               <FormControlLabel
-                value="answer_c"
-                name="correct_answer"
+                value="C"
+                name="correctAnswer"
                 control={<Radio />}
                 label="Answer C"
-                checked={this.state.selectedValue === "answer_c"}
+                checked={this.state.selectedValue === "C"}
                 onChange={this.handleChange}
               />
               <FormControlLabel
-                value="answer_d"
-                name="correct_answer"
+                value="D"
+                name="correctAnswer"
                 control={<Radio />}
                 label="Answer D"
-                checked={this.state.selectedValue === "answer_d"}
+                checked={this.state.selectedValue === "D"}
                 onChange={this.handleChange}
               />
             </div>
@@ -153,6 +168,7 @@ class QuestionForm extends PureComponent {
             <button type="submit">Save</button>
           </form>
         </Paper>
+
       </div>
     );
   }
