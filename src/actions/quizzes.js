@@ -1,7 +1,10 @@
 import * as request from "superagent";
 
-export const FETCHED_ALL_QUIZZES = "FETCHED_ALL_QUIZZES";
-export const DELETE_QUIZ = "DELETE_QUIZ";
+
+export const FETCHED_ALL_QUIZZES = 'FETCHED_ALL_QUIZZES'
+export const DELETE_QUIZ = 'DELETE_QUIZ'
+export const FETCH_QUIZ = 'FETCH_QUIZ'
+
 
 const baseUrl = "http://localhost:4000";
 
@@ -18,12 +21,23 @@ export const fetchAllQuizzes = () => dispatch => {
     .catch(err => alert(err));
 };
 
-export const deleteQuiz = quizId => dispatch => {
-  request
-    .delete(`${baseUrl}/quizzes/${quizId}`)
 
-    .then(response =>
-      dispatch({
+export const fetchQuiz = (quizId) => (dispatch) => {
+  
+    request
+    .get(`${baseUrl}/quizzes/${quizId}`)
+    .then(response => dispatch({
+      type: FETCH_QUIZ,
+      payload: response.body
+    }))
+    .catch(err => alert(err))
+    }
+    
+
+export const deleteQuiz = (quizId) => (dispatch) => {
+    request
+      .delete(`${baseUrl}/quizzes/${quizId}`)
+      .then(response => dispatch({
         type: DELETE_QUIZ,
         payload: quizId
       })

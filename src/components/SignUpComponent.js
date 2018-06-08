@@ -1,56 +1,159 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import * as request from 'superagent'
+import TextField from "@material-ui/core/TextField";
+import Paper from "@material-ui/core/Paper";
+import "../App.css";
+import Button from '@material-ui/core/Button';
+
+
 
 let signUpInfo = {}
 
-class SignUp extends PureComponent {
+class SignUpComponent extends Component {
 
     fieldNames=["First name", "Last name", "Email", "Password",
      "Retype password"]
 
-     handleSubmit(evt){
-        evt.preventDefault()
-        console.log(signUpInfo)   
-      }
 
-  
-    handleChange(evt) {
-        const {id, value } = evt.target
-        signUpInfo[id]= value
+
+     handleSubmit = event => {
+        event.preventDefault()
+            console.log(signUpInfo)
       }
+    
+      handleChangeName = event => {
+        const { name, value } = event.target
+        event.target.setCustomValidity('')
+        if (!event.target.validity.valid) {
+          event.target.setCustomValidity('Please enter your name')
+        }
+        signUpInfo[name] = value
+      }
+    
+      handleChangeLastName = event => {
+        const { name, value } = event.target
+        event.target.setCustomValidity('')
+        if (!event.target.validity.valid) {
+          event.target.setCustomValidity('Please enter your Lastname')
+        }
+        signUpInfo[name] = value
+      }
+    
+      handleChangeEmail = event => {
+        const { name, value } = event.target
+        event.target.setCustomValidity('')
+        if (!event.target.validity.valid) {
+          event.target.setCustomValidity('Please enter a valid email address')
+        }
+        signUpInfo[name] = value
+      }
+    
+      handleChangePassword = event => {
+        const { name, value } = event.target
+        event.target.setCustomValidity('')
+        if (!event.target.validity.valid) {
+          event.target.setCustomValidity(
+            'Password must be at least 8 characters long, with at least one letter and one number'
+          )
+        }
+        signUpInfo[name] = value
+
+      }
+    
+      handleChangeConfirm = event => {
+        const { name, value } = event.target
+        event.target.setCustomValidity('')
+        if (!event.target.validity.valid) {
+          event.target.setCustomValidity('Please confirm your password')
+        }
+        signUpInfo[name] = value
+      }
+    
 
     render() {
+        const textField = {
+            width: 300
+          }
+    
+
       return (
             <div>
-
                 <h1>Sign up</h1>
-                <form onSubmit={this.handleSubmit}>
-                    {this.fieldNames.map((fieldId) =>  
+                <Paper className="styles" elevation={4}>
+                <form onSubmit={this.handleSubmit.bind(this)}>
                     <div>
-                        <span>{ fieldId }</span>
-                        <input  
-                            type="text"
-                            className="input"
-                            id={fieldId} 
-                            onChange={this.handleChange}               
-                            />
+                        <TextField
+                        style={textField}
+                            type="firstName"
+                            name="firstName"
+                            required="required"
+                            placeholder="Please enter first name"
+                            onChange={this.handleChangeName.bind(this)}
+                        />
                     </div>
-                    )}
-
                     <div>
-                        <button
-                            type="submit"
-                            className="submitButton"
-                            onClick={this.handleSubmit.bind(this)}
-                            id='SignupButton'
-                            >submit</button>
+                        <TextField
+                        style={textField}
+                            type="lastName"
+                            name="lastName"
+                            required="required"
+                            placeholder="Please enter your last name"
+                            onChange={this.handleChangeLastName.bind(this)}
+                        />
                     </div>
+                    <div> 
+                        <TextField
+                        style={textField}
+                            type="email"
+                            name="email"
+                            required="required"
+                            pattern="(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}"
+                            placeholder="Please enter your email"
+                            onChange={this.handleChangeEmail.bind(this)}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                        style={textField}
+                            type="password"
+                            name="password"
+                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                            required="required"
+                            placeholder="Please enter your password"
+                            onChange={this.handleChangePassword.bind(this)}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                        style={textField}
+                            className="textField"
+                            type="password"
+                            name="confirmPassword"
+                            required="required"
+                            placeholder="Please confirm password"
+                            onChange={this.handleChangeConfirm.bind(this)}
+                        />
+                    </div>
+                    {signUpInfo.password &&
+                        signUpInfo.confirmPassword &&
+                        signUpInfo.password !== signUpInfo.confirmPassword && (
+                        <p style={{ color: 'red' }}>The passwords do not match!</p>
+                        )}
+                     <br/>
+          <Button
+                variant="outlined"
+                type="submit"
+                id="SignUpButton"
+                color="primary"
+                >Sign Up!</Button>
                 </form>
+                </Paper>
             </div>
 
               );
     }
   }
   
-  export default SignUp;
+  export default SignUpComponent;
+
 

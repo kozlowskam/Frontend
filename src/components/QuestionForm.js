@@ -1,12 +1,16 @@
 import React, { PureComponent } from "react";
-import Paper from "@material-ui/core/Paper";
-import "../App.css";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
+import Paper from '@material-ui/core/Paper';
+//import "../App.css";
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+//import AccountCircle from '@material-ui/icons/AccountCircle';
+import Icon from '@material-ui/core/Icon';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import Button from '@material-ui/core/Button';
+
+
 
 class QuestionForm extends PureComponent {
   constructor(props) {
@@ -34,14 +38,25 @@ class QuestionForm extends PureComponent {
   handleChange = event => {
     const { name, value } = event.target;
 
-    this.setState({
-      [name]: value,
-      selectedValue: event.target.value
-    });
+
+    const { name , value } = event.target;
+
+
+   this.setState ({
+     [name]: value,
+     selectedValue: event.target.value
+})
+   
+
   };
 
   render() {
     const initialValues = this.props.initialValues || {};
+    
+    const gridStyle = {
+      display: 'flex',
+      justifyContent: 'center',
+    }
 
     return (
       <div>
@@ -161,6 +176,7 @@ class QuestionForm extends PureComponent {
             <button type="submit">Save</button>
           </form>
         </Paper>
+
       </div>
     );
   }
