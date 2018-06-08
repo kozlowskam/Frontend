@@ -19,6 +19,10 @@ class QuizForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
+    this.setState({
+      title: "",
+      webhook: ""
+    });
   };
 
   handleChange = event => {
