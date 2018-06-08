@@ -3,6 +3,8 @@ import * as request from 'superagent'
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import "../App.css";
+import Button from '@material-ui/core/Button';
+
 
 
 let signUpInfo = {}
@@ -80,7 +82,6 @@ class SignUpComponent extends Component {
                 <Paper className="styles" elevation={4}>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <div>
-                        <label>First Name &nbsp;:</label>
                         <TextField
                         style={textField}
                             type="firstName"
@@ -91,7 +92,6 @@ class SignUpComponent extends Component {
                         />
                     </div>
                     <div>
-                        <label>Last Name &nbsp;:</label>   
                         <TextField
                         style={textField}
                             type="lastName"
@@ -101,8 +101,7 @@ class SignUpComponent extends Component {
                             onChange={this.handleChangeLastName.bind(this)}
                         />
                     </div>
-                    <div>
-                        <label>Email &nbsp;:</label>   
+                    <div> 
                         <TextField
                         style={textField}
                             type="email"
@@ -114,7 +113,6 @@ class SignUpComponent extends Component {
                         />
                     </div>
                     <div>
-                        <label>Password:</label>
                         <TextField
                         style={textField}
                             type="password"
@@ -126,7 +124,6 @@ class SignUpComponent extends Component {
                         />
                     </div>
                     <div>
-                        <label>Confirm Password:</label>
                         <TextField
                         style={textField}
                             className="textField"
@@ -142,7 +139,13 @@ class SignUpComponent extends Component {
                         signUpInfo.password !== signUpInfo.confirmPassword && (
                         <p style={{ color: 'red' }}>The passwords do not match!</p>
                         )}
-                    <button type="submit">Sign Up</button>
+                     <br/>
+          <Button
+                variant="outlined"
+                type="submit"
+                id="SignUpButton"
+                color="primary"
+                >Sign Up!</Button>
                 </form>
                 </Paper>
             </div>

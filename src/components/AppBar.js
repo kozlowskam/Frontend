@@ -19,7 +19,7 @@ function SimpleAppBar(props) {
       <AppBar position="static" color="primary" align="center">
         <Toolbar>
           <Typography className={classes.root} variant="title" color="inherit">
-            Ultimate Quiz'17'
+            Ultimate Quiz 17
           </Typography>
         </Toolbar>
       </AppBar>
