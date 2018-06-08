@@ -34,8 +34,9 @@ export class CreateQuiz extends PureComponent {
         <br />
         <QuestionForm onSubmit={this.addQuestion} />
         <br />
-        <Button type="submit" variant="contained" color="primary">
-          <Link to={"/quizzes"}> DONE </Link>
+        <Button 
+          type="submit" 
+          href="/quizzes">DONE
         </Button>
         <br /> <br />
       </div>

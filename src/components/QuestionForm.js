@@ -185,8 +185,8 @@ class QuestionForm extends PureComponent {
                 onChange={this.handleChange}
               />
             </div>
-
-            <Button type="submit" variant="contained" color="primary">
+            
+            <Button type="submit">
               ADD QUESTION
             </Button>
           </form>

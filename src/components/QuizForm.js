@@ -68,7 +68,7 @@ class QuizForm extends PureComponent {
               </Grid>
             </div>
             <br />
-            <Button type="submit" variant="contained" color="primary">
+            <Button type="submit" >
               Save
             </Button>
           </form>

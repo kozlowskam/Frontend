@@ -1,5 +1,11 @@
 .App {
+  display:flex;
+  flex-direction: column;
   text-align: center;
+}
+
+div form :last-child {
+  justify-content: center;
 }
 
 .styles {
@@ -9,6 +15,6 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 3px 5px 2px rgba(93, 231, 81, 0.849) !important;
-    background-color: aqua !important
+    /* box-shadow: 0 3px 5px 2px rgba(93, 231, 81, 0.849) !important;
+    background-color: aqua !important */
 };
