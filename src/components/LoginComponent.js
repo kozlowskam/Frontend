@@ -46,7 +46,7 @@ class LoginComponent extends PureComponent {
       return (
         <div className="logIn">
         <h1>Log In</h1>
-        <Paper className="styles" elevation={4}>
+        <Paper className="styles" elevation={50}>
           <form onSubmit={this.handleSubmit}>
             <p>Email:  </p>
             <TextField

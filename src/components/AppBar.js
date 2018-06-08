@@ -8,8 +8,7 @@ import Typography from "@material-ui/core/Typography";
 const styles = {
   root: {
     flexGrow: 1,
-    textAlign: 'center',
-    backgroundColor: 'rgba(93, 231, 81, 0.849)'
+    textAlign: 'center'
   }
 };
 
