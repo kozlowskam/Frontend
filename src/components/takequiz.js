@@ -3,14 +3,18 @@ import { connect } from "react-redux";
 import { Quiz } from "../lib/data.js";
 import { Quiz2 } from "../lib/data.js";
 import { takeQuiz } from "../actions/takequiz";
-//test
-//adsf
+
+import { Link, Redirect } from "react-router-dom";
+
+
 const answer = [];
 
 class TakeQuiz extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      redirect: false
+    };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,14 +33,20 @@ class TakeQuiz extends PureComponent {
   }
   handleSubmit(event) {
     this.props.takeQuiz(answer);
-    console.log(answer, "__");
 
     event.preventDefault();
+
+    this.setState({
+      redirect: true
+    })
+
   }
 
   render() {
     return (
+
       <form onSubmit={this.handleSubmit}>
+      
         {Quiz2.questions.map((quetion, i) => (
           <div>
             {quetion.question} <br />
@@ -74,9 +84,13 @@ class TakeQuiz extends PureComponent {
             <br />
           </div>
         ))}
-
         <input type="submit" value="Submit" />
-      </form>
+        {
+          this.state.redirect &&
+          <Redirect to='/quizzes/:id/result' />
+        }
+      </form> 
+      
     );
   }
 }
