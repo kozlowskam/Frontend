@@ -10,7 +10,7 @@ class QuizResult extends PureComponent {
         
       return (
         <div>
-            You scored: {quizResult}
+            You scored: {quizResult}/10
             <Link to={"/quizzes"}> Home </Link>
         </div>
       );
@@ -19,7 +19,7 @@ class QuizResult extends PureComponent {
 
   const mapStateToProps = state => {
       return {
-          quizResult: state.quizResult
+          quizResult: state.quizResult.score
       }
   }
   

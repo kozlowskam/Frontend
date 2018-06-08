@@ -28,7 +28,7 @@ class QuestionList extends PureComponent {
 
   addQuestion = question => {
     let lastQuiz = { ...this.props.quizzes[this.props.quizzes.length - 1] };
-
+    console.log(this.props.quizzes.length);
     question = { ...question, quiz: lastQuiz.id };
     this.props.addQuestion(question);
   };
