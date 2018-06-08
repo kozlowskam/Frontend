@@ -5,24 +5,19 @@ import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import "../App.css";
-import Button from '@material-ui/core/Button';
-import { Redirect } from 'react-router-dom'
-import {logIn} from '../actions/logInSignUpAction'
-import {connect} from 'react-redux'
-import store from '../store'
+import Button from "@material-ui/core/Button";
+import { Redirect } from "react-router-dom";
+import { logIn } from "../actions/logInSignUpAction";
+import { connect } from "react-redux";
+import store from "../store";
 
-let logInInfo = {}
+let logInInfo = {};
 class LoginComponent extends PureComponent {
+  handleSubmit(evt) {
+    evt.preventDefault();
 
-
-
-
-  handleSubmit(evt){
-    evt.preventDefault()
-
-    console.log(logInInfo, 'info needs to be pushed to auth when ready')   
-    this.props.logIn(logInInfo)
-    
+    console.log(logInInfo, "info needs to be pushed to auth when ready");
+    this.props.logIn(logInInfo);
   }
 
   handleChange(evt) {
@@ -100,5 +95,9 @@ class LoginComponent extends PureComponent {
       </div>
     );
   }
-  
-  export default connect(null, {logIn})(LoginComponent)
+}
+
+export default connect(
+  null,
+  { logIn }
+)(LoginComponent);
