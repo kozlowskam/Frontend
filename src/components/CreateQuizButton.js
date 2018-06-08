@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addQuiz } from "../actions/quiz";
+import Button from '@material-ui/core/Button'
 import "./CreateQuizButton.css";
 
 export class CreateQuizButton extends PureComponent {
@@ -17,10 +18,10 @@ export class CreateQuizButton extends PureComponent {
 
   render() {
     return (
-      <button onClick={this.addQuizClick} className="CreateQuizButton">
+      <Button onClick={this.addQuizClick} className="CreateQuizButton">
         {" "}
         SAVE QUIZ{" "}
-      </button>
+      </Button>
     );
   }
 }
