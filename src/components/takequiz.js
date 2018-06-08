@@ -4,7 +4,7 @@ import { Quiz } from "../lib/data.js";
 import { Quiz2 } from "../lib/data.js";
 import { takeQuiz } from "../actions/takequiz";
 //test
-//adsf
+
 const answer = [];
 
 class TakeQuiz extends PureComponent {
