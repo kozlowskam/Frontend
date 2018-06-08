@@ -1,12 +1,14 @@
 import React, { PureComponent } from "react";
 import Paper from "@material-ui/core/Paper";
-import "../App.css";
+//import "../App.css";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+//import AccountCircle from '@material-ui/icons/AccountCircle';
+import Icon from "@material-ui/core/Icon";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+import Button from "@material-ui/core/Button";
 
 class QuestionForm extends PureComponent {
   constructor(props) {
@@ -20,11 +22,19 @@ class QuestionForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
+    this.setState({
+      question: "",
+      initialValues: "",
+      A: "",
+      B: "",
+      C: "",
+      D: "",
+      selectedValue: ""
+    });
   };
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(event.target.value)
 
     this.setState({
       [name]: value,
@@ -35,13 +45,18 @@ class QuestionForm extends PureComponent {
   render() {
     const initialValues = this.props.initialValues || {};
 
+    const gridStyle = {
+      display: "flex",
+      justifyContent: "center"
+    };
+
     return (
       <div>
         <Paper className="styles" elevation={4}>
           <form onSubmit={this.handleSubmit}>
             <div>
               <TextField
-                label="Type your question here"
+                label="Type your question"
                 name="question"
                 id="question"
                 helperText="Just be creative!"
@@ -49,17 +64,22 @@ class QuestionForm extends PureComponent {
                 onChange={this.handleChange}
               />
             </div>
-
+            <br />
             <div>
-              <Grid container spacing={8} alignItems="flex-end">
+              <Grid
+                container
+                spacing={8}
+                alignItems="flex-end"
+                style={gridStyle}
+              >
                 <Grid item>
-                  <AccountCircle />
+                  <Icon>A</Icon>
                 </Grid>
                 <Grid item>
                   <TextField
-                    label="First answer here"
-                    name="answer_a"
-                    value={this.state.answer_a || initialValues.answer_a || ""}
+                    label="First answer"
+                    name="A"
+                    value={this.state.A || initialValues.A || ""}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -67,15 +87,20 @@ class QuestionForm extends PureComponent {
             </div>
 
             <div>
-              <Grid container spacing={8} alignItems="flex-end">
+              <Grid
+                container
+                spacing={8}
+                alignItems="flex-end"
+                style={gridStyle}
+              >
                 <Grid item>
-                  <AccountCircle />
+                  <Icon>B</Icon>
                 </Grid>
                 <Grid item>
                   <TextField
-                    label="Second answer here"
-                    name="answer_b"
-                    value={this.state.answer_b || initialValues.answer_b || ""}
+                    label="Second answer"
+                    name="B"
+                    value={this.state.B || initialValues.B || ""}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -83,15 +108,20 @@ class QuestionForm extends PureComponent {
             </div>
 
             <div>
-              <Grid container spacing={8} alignItems="flex-end">
+              <Grid
+                container
+                spacing={8}
+                alignItems="flex-end"
+                style={gridStyle}
+              >
                 <Grid item>
-                  <AccountCircle />
+                  <Icon>C</Icon>
                 </Grid>
                 <Grid item>
                   <TextField
-                    label="Third answer here"
-                    name="answer_c"
-                    value={this.state.answer_c || initialValues.answer_c || ""}
+                    label="Third answer"
+                    name="C"
+                    value={this.state.C || initialValues.C || ""}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -99,58 +129,71 @@ class QuestionForm extends PureComponent {
             </div>
 
             <div>
-              <Grid container spacing={8} alignItems="flex-end">
+              <Grid
+                container
+                spacing={8}
+                alignItems="flex-end"
+                style={gridStyle}
+              >
                 <Grid item>
-                  <AccountCircle />
+                  <Icon>D</Icon>
                 </Grid>
                 <Grid item>
                   <TextField
-                    label="Fourth answer here"
-                    name="answer_d"
-                    value={this.state.answer_d || initialValues.answer_d || ""}
+                    label="Fourth answer"
+                    name="D"
+                    value={this.state.D || initialValues.D || ""}
                     onChange={this.handleChange}
                   />
                 </Grid>
               </Grid>
             </div>
-
+            <br />
+            <br />
             <div>
               <FormLabel component="legend">Correct Answer</FormLabel>
               <FormControlLabel
-                value="answer_a"
-                name="correct_answer"
+                value="A"
+                name="correctAnswer"
                 control={<Radio />}
                 label="Answer A"
-                checked={this.state.selectedValue === "answer_a"}
+                checked={this.state.selectedValue === "A"}
                 onChange={this.handleChange}
               />
               <FormControlLabel
-                value="answer_b"
-                name="correct_answer"
+                value="B"
+                name="correctAnswer"
                 control={<Radio />}
                 label="Answer B"
-                checked={this.state.selectedValue === "answer_b"}
+                checked={this.state.selectedValue === "B"}
                 onChange={this.handleChange}
               />
               <FormControlLabel
-                value="answer_c"
-                name="correct_answer"
+                value="C"
+                name="correctAnswer"
                 control={<Radio />}
                 label="Answer C"
-                checked={this.state.selectedValue === "answer_c"}
+                checked={this.state.selectedValue === "C"}
                 onChange={this.handleChange}
               />
               <FormControlLabel
-                value="answer_d"
-                name="correct_answer"
+                value="D"
+                name="correctAnswer"
                 control={<Radio />}
                 label="Answer D"
-                checked={this.state.selectedValue === "answer_d"}
+                checked={this.state.selectedValue === "D"}
                 onChange={this.handleChange}
               />
             </div>
 
-            <button type="submit">Save</button>
+            <Button
+              type="submit"
+              variant="contained"
+              component="span"
+              color="primary"
+            >
+              Save
+            </Button>
           </form>
         </Paper>
       </div>
