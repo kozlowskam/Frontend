@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { fetchAllQuizzes, deleteQuiz, fetchQuiz } from '../actions/quizzes'
+import { fetchAllQuizzes, deleteQuiz, fetchQuiz, fetchResults } from '../actions/quizzes'
 
 class QuizzesList extends PureComponent {
     static propTypes = {
@@ -22,6 +22,10 @@ class QuizzesList extends PureComponent {
 
     fetchQuiz(quizId) {
       this.props.fetchQuiz(quizId)
+    }
+
+    fetchResults(quizId) {
+      this.props.fetchResults(quizId)
     }
 
     render() {
@@ -47,6 +51,11 @@ class QuizzesList extends PureComponent {
                   <button onClick={() => this.deleteQuiz(quiz.id)}>
                     Delete
                   </button>
+                  <Link to={`/quizzes/${quiz.id}/results`}>
+                  <button onClick={() => this.fetchResults(quiz.id)}>
+                    Check Results
+                  </button>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -73,7 +82,7 @@ export default connect(
   {
     fetchAllQuizzes,
     deleteQuiz,
-
+    fetchResults,
     fetchQuiz
   })(QuizzesList)
 

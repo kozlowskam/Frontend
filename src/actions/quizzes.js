@@ -4,6 +4,7 @@ import * as request from "superagent";
 export const FETCHED_ALL_QUIZZES = 'FETCHED_ALL_QUIZZES'
 export const DELETE_QUIZ = 'DELETE_QUIZ'
 export const FETCH_QUIZ = 'FETCH_QUIZ'
+export const FETCH_RESULTS = 'FETCH_RESULTS'
 
 
 const baseUrl = "http://localhost:4000";
@@ -43,6 +44,17 @@ export const deleteQuiz = (quizId) => (dispatch) => {
       })
     );
 };
+
+export const fetchResults = (quizId) => (dispatch) => {
+  
+  request
+  .get(`${baseUrl}/responses/${quizId}`)
+  .then(response => dispatch({
+    type: FETCH_RESULTS,
+    payload: response.body.response
+  }))
+  .catch(err => alert(err))
+  }
 
 // const quizes =  [
 //     {id : 1, title : 'quiz1'},

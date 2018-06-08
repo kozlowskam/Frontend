@@ -11,6 +11,7 @@ import QuizzesList from "./components/quizzeslist";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Takequiz from "./components/takequiz";
 import quizResult from './components/QuizResult'
+import AllResults from './components/AllResults'
 
 class App extends Component {
   render() {
@@ -31,6 +32,9 @@ class App extends Component {
           <Route exact path="/quizzes" component={QuizzesList} />
           <Route exact path="/quizzes/:id" component={Takequiz} />
           <Route exact path="/quizzes/:id/result" component={quizResult} />
+          <Route exact path="/quizzes/:id/results" component={AllResults} />
+
+
 
 
         </div>
